@@ -93,4 +93,62 @@ public static class ValidatableStringExtensions
 
     return Unit.Default;
   }
+
+  public static Result<Unit> IfEndsWith(this Validatable<string> validatable, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
+  {
+    if (validatable.Value.EndsWith(otherString, comparisonType))
+    {
+      return new Result<Unit>(new ArgumentException($"String should not end with '{otherString}' (comparison type: '{comparisonType}').", validatable.ParamName));
+    }
+
+    return Unit.Default;
+  }
+
+  public static Result<Unit> IfNotEndsWith(this Validatable<string> validatable, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
+  {
+    if (!validatable.Value.EndsWith(otherString, comparisonType))
+    {
+      return new Result<Unit>(new ArgumentException($"String should end with '{otherString}' (comparison type: '{comparisonType}').", validatable.ParamName));
+    }
+
+    return Unit.Default;
+  }
+
+  public static Result<Unit> IfStartsWith(this Validatable<string> validatable, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
+  {
+    if (validatable.Value.StartsWith(otherString, comparisonType))
+    {
+      return new Result<Unit>(new ArgumentException($"String should not start with '{otherString}' (comparison type: '{comparisonType}').", validatable.ParamName));
+    }
+
+    return Unit.Default;
+  }
+
+  public static Result<Unit> IfNotStartsWith(this Validatable<string> validatable, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
+  {
+    if (!validatable.Value.StartsWith(otherString, comparisonType))
+    {
+      return new Result<Unit>(new ArgumentException($"String should start with '{otherString}' (comparison type: '{comparisonType}').", validatable.ParamName));
+    }
+
+    return Unit.Default;
+  }
+  public static Result<Unit> IfContains(this Validatable<string> validatable, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
+  {
+    if (validatable.Value.Contains(otherString, comparisonType))
+    {
+      return new Result<Unit>(new ArgumentException($"String should not contain '{otherString}' (comparison type: '{comparisonType}').", validatable.ParamName));
+    }
+
+    return Unit.Default;
+  }
+  public static Result<Unit> IfNotContains(this Validatable<string> validatable, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
+  {
+    if (!validatable.Value.Contains(otherString, comparisonType))
+    {
+      return new Result<Unit>(new ArgumentException($"String should contain '{otherString}' (comparison type: '{comparisonType}').", validatable.ParamName));
+    }
+
+    return Unit.Default;
+  }
 }
