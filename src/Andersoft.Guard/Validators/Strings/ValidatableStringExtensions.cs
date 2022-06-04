@@ -1,4 +1,5 @@
-﻿using Andersoft.Guard.Validators;
+﻿using System.Text.RegularExpressions;
+using Andersoft.Guard.Validators;
 using LanguageExt;
 using LanguageExt.Common;
 
@@ -147,6 +148,50 @@ public static class ValidatableStringExtensions
     if (!validatable.Value.Contains(otherString, comparisonType))
     {
       return new Result<Unit>(new ArgumentException($"String should contain '{otherString}' (comparison type: '{comparisonType}').", validatable.ParamName));
+    }
+
+    return Unit.Default;
+  }
+
+  public static Result<Unit> IfMatches(this Validatable<string> validatable, Regex regex)
+  {
+    if (regex.IsMatch(validatable.Value))
+    {
+      return new Result<Unit>(new ArgumentException($"String should not match RegEx pattern '{regex}'", validatable.ParamName));
+    }
+
+    return Unit.Default;
+  }
+
+  public static Result<Unit> IfNotMatches(this Validatable<string> validatable, Regex regex)
+  {
+    if (!regex.IsMatch(validatable.Value))
+    {
+      return new Result<Unit>(new ArgumentException($"String should match RegEx pattern '{regex}'", validatable.ParamName));
+    }
+
+    return Unit.Default;
+  }
+  
+  public static Result<Unit> IfMatches(this Validatable<string> validatable, string regexPattern, RegexOptions regexOptions)
+  {
+    var regex = new Regex(regexPattern, regexOptions);
+
+    if (regex.IsMatch(validatable.Value))
+    {
+      return new Result<Unit>(new ArgumentException($"String should not match RegEx pattern '{regex}'", validatable.ParamName));
+    }
+
+    return Unit.Default;
+  }
+
+  public static Result<Unit> IfNotMatches(this Validatable<string> validatable, string regexPattern, RegexOptions regexOptions)
+  {
+    var regex = new Regex(regexPattern, regexOptions);
+
+    if (!regex.IsMatch(validatable.Value))
+    {
+      return new Result<Unit>(new ArgumentException($"String should match RegEx pattern '{regex}'", validatable.ParamName));
     }
 
     return Unit.Default;
