@@ -34,10 +34,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
 
       // Act
       var result = value.Error().IfTrue()
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(bool?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().HaveValue().And.BeFalse();
     }
 
     [Test]
@@ -48,10 +48,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
 
       // Act
       var result = value.Error().IfFalse()
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(bool?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().HaveValue().And.BeTrue();
     }
 
     [Test]
@@ -90,10 +90,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
 
       // Act
       var result = value.Error().IfTrue(x => x.Length == 0)
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(bool?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().HaveValue().And.BeFalse();
     }
 
     [Test]
@@ -104,10 +104,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
 
       // Act
       var result = value.Error().IfFalse(x => x.Length > 0)
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(bool?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().HaveValue().And.BeTrue();
     }
 
     [Test]

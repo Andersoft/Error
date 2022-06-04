@@ -3,7 +3,7 @@ using Andersoft.Guard.Validators.Booleans;
 using FluentAssertions;
 using LanguageExt;
 
-namespace Andersoft.Guard.UnitTests.Validators.Booleans;
+namespace Andersoft.Guard.valueTests.Validators.Booleans;
 
 public class BooleanPropertiesTests
 {
@@ -29,10 +29,10 @@ public class BooleanPropertiesTests
 
     // Act
     var result = person.Error().IfTrue(p => p.Id == 2)
-      .Match(unit => unit, error => default(Unit?));
+      .Match(value => value, error => default(bool?));
 
     // Assert
-    result.Should().BeOfType<Unit>();
+    result.Should().HaveValue().And.BeFalse();
   }
 
   [Test]
@@ -57,9 +57,9 @@ public class BooleanPropertiesTests
 
     // Act
     var result = person.Error().IfFalse(p => p.Id == 1)
-      .Match(unit => unit, error => default(Unit?));
+      .Match(value => value, error => default(bool?));
 
     // Assert
-    result.Should().BeOfType<Unit>();
+    result.Should().HaveValue().And.BeTrue();
   }
 }
