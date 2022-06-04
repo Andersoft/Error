@@ -8,7 +8,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Uri;
 public class UrisTests
 {
     [Test]
-    public void WhenCheckingIfHttp_WhenHttp_ThenShouldError()
+    public void WhenCheckingIfHttp_GivenHttp_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com");
@@ -22,7 +22,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfHttp_WhenHttps_ThenShouldNotError()
+    public void WhenCheckingIfHttp_GivenHttps_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri("https://www.google.com");
@@ -35,7 +35,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfNotHttp_WhenNotHttp_ThenShouldError()
+    public void WhenCheckingIfNotHttp_GivenNotHttp_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri("https://www.google.com");
@@ -49,7 +49,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfNotHttp_WhenHttp_ThenShouldNotError()
+    public void WhenCheckingIfNotHttp_GivenHttp_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com");
@@ -62,7 +62,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfHttps_WhenHttps_ThenShouldError()
+    public void WhenCheckingIfHttps_GivenHttps_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri("https://www.google.com");
@@ -76,7 +76,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfHttps_WhenHttp_ThenShouldNotError()
+    public void WhenCheckingIfHttps_GivenHttp_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com");
@@ -89,7 +89,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfNotHttps_WhenNotHttps_ThenShouldError()
+    public void WhenCheckingIfNotHttps_GivenNotHttps_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com");
@@ -103,7 +103,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfNotHttps_WhenHttps_ThenShouldNotError()
+    public void WhenCheckingIfNotHttps_GivenHttps_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri("https://www.google.com");
@@ -116,7 +116,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfSchemeEquals_WhenEquals_ThenShouldError()
+    public void WhenCheckingIfSchemeEquals_GivenEquals_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri($"{System.Uri.UriSchemeFtp}://www.google.com");
@@ -130,7 +130,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfSchemeEquals_WhenNotEquals_ThenShouldNotError()
+    public void WhenCheckingIfSchemeEquals_GivenNotEquals_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri($"{System.Uri.UriSchemeHttp}://www.google.com");
@@ -143,7 +143,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfSchemeNotEquals_WhenNotEquals_ThenShouldError()
+    public void WhenCheckingIfSchemeNotEquals_GivenNotEquals_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri($"{System.Uri.UriSchemeHttp}://www.google.com");
@@ -157,7 +157,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfSchemeNotEquals_WhenEquals_ThenShouldNotError()
+    public void WhenCheckingIfSchemeNotEquals_GivenEquals_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri($"{System.Uri.UriSchemeFtp}://www.google.com");
@@ -170,7 +170,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfAbsolute_WhenAbsolute_ThenShouldError()
+    public void WhenCheckingIfAbsolute_GivenAbsolute_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com");
@@ -184,7 +184,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfAbsolute_WhenNotAbsolute_ThenShouldNotError()
+    public void WhenCheckingIfAbsolute_GivenNotAbsolute_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri("/path/to/file", UriKind.Relative);
@@ -197,7 +197,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfRelative_WhenRelative_ThenShouldError()
+    public void WhenCheckingIfRelative_GivenRelative_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri("/path/to/file", UriKind.Relative);
@@ -211,7 +211,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfRelative_WhenNotRelative_ThenShouldNotError()
+    public void WhenCheckingIfRelative_GivenNotRelative_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com");
@@ -224,7 +224,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfNotAbsolute_WhenNotAbsolute_ThenShouldError()
+    public void WhenCheckingIfNotAbsolute_GivenNotAbsolute_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri("/path/to/file", UriKind.Relative);
@@ -238,7 +238,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfNotAbsolute_WhenAbsolute_ThenShouldNotError()
+    public void WhenCheckingIfNotAbsolute_GivenAbsolute_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com");
@@ -251,7 +251,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfNotRelative_WhenNotRelative_ThenShouldError()
+    public void WhenCheckingIfNotRelative_GivenNotRelative_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com");
@@ -265,7 +265,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfNotRelative_WhenRelative_ThenShouldNotError()
+    public void WhenCheckingIfNotRelative_GivenRelative_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri("/path/to/file", UriKind.Relative);
@@ -278,7 +278,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfPortEquals_WhenPortEquals_ThenShouldError()
+    public void WhenCheckingIfPortEquals_GivenPortEquals_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com:80");
@@ -292,7 +292,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfPortEquals_WhenNotEquals_ThenShouldNotError()
+    public void WhenCheckingIfPortEquals_GivenNotEquals_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com:8080");
@@ -305,7 +305,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfPortNotEquals_WhenNotEquals_ThenShouldError()
+    public void WhenCheckingIfPortNotEquals_GivenNotEquals_ThenShouldError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com:8080");
@@ -319,7 +319,7 @@ public class UrisTests
     }
 
     [Test]
-    public void WhenCheckingIfPortNotEquals_WhenEquals_ThenShouldNotError()
+    public void WhenCheckingIfPortNotEquals_GivenEquals_ThenShouldNotError()
     {
         // Arrange
         var uri = new System.Uri("http://www.google.com:80");

@@ -8,7 +8,7 @@ namespace Andersoft.Guard.UnitTests.Validators.DateTime;
 public class DateTimePropertiesTests
 {
     [Test]
-    public void WhenCheckingIfDateTimePropertyUtc_WhenValueIsUtc_ThenShouldError()
+    public void WhenCheckingIfDateTimePropertyUtc_GivenValueIsUtc_ThenShouldError()
     {
         // Arrange
         var person = new { BirthDate = System.DateTime.UtcNow };
@@ -22,7 +22,7 @@ public class DateTimePropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfDateTimePropertyUtc_WhenValueIsNotUtc_ThenShouldNotError()
+    public void WhenCheckingIfDateTimePropertyUtc_GivenValueIsNotUtc_ThenShouldNotError()
     {
         // Arrange
         var person = new { BirthDate = System.DateTime.Now };
@@ -35,7 +35,7 @@ public class DateTimePropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfDateTimePropertyNotUtc_WhenValueIsNotUtc_ThenShouldError()
+    public void WhenCheckingIfDateTimePropertyNotUtc_GivenValueIsNotUtc_ThenShouldError()
     {
         // Arrange
         var person = new { BirthDate = System.DateTime.Now };
@@ -49,7 +49,7 @@ public class DateTimePropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfDateTimePropertyNotUtc_WhenValueIsUtc_ThenShouldNotError()
+    public void WhenCheckingIfDateTimePropertyNotUtc_GivenValueIsUtc_ThenShouldNotError()
     {
         // Arrange
         var person = new { BirthDate = System.DateTime.UtcNow };
@@ -62,7 +62,7 @@ public class DateTimePropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfDateTimeKindPropertyUtc_WhenValueIsUtc_ThenShouldError()
+    public void WhenCheckingIfDateTimeKindPropertyUtc_GivenValueIsUtc_ThenShouldError()
     {
         // Arrange
         var person = new { BirthDate = System.DateTime.UtcNow };
@@ -76,7 +76,7 @@ public class DateTimePropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfDateTimeKindPropertyUtc_WhenValueIsNotUtc_ThenShouldNotError()
+    public void WhenCheckingIfDateTimeKindPropertyUtc_GivenValueIsNotUtc_ThenShouldNotError()
     {
         // Arrange
         var person = new { BirthDate = System.DateTime.Now };
@@ -89,7 +89,7 @@ public class DateTimePropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfDateTimeKindPropertyNotUtc_WhenValueIsNotUtc_ThenShouldError()
+    public void WhenCheckingIfDateTimeKindPropertyNotUtc_GivenValueIsNotUtc_ThenShouldError()
     {
         // Arrange
         var person = new { BirthDate = System.DateTime.Now };
@@ -103,7 +103,7 @@ public class DateTimePropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfDateTimeKindPropertyNotUtc_WhenValueIsUtc_ThenShouldNotError()
+    public void WhenCheckingIfDateTimeKindPropertyNotUtc_GivenValueIsUtc_ThenShouldNotError()
     {
         // Arrange
         var person = new { BirthDate = System.DateTime.UtcNow };

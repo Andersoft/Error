@@ -8,7 +8,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Equalities;
 public class EqualitiesTests
 {
     [Test]
-    public void WhenCheckingIfDefault_WhenValueIsDefault_ThenShouldError()
+    public void WhenCheckingIfDefault_GivenValueIsDefault_ThenShouldError()
     {
         // Arrange
         System.DateTime value = default;
@@ -22,7 +22,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfDefault_WhenValueIsNotDefault_ThenShouldNotError()
+    public void WhenCheckingIfDefault_GivenValueIsNotDefault_ThenShouldNotError()
     {
         // Arrange
         System.DateTime value = System.DateTime.Now;
@@ -35,7 +35,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfNotDefault_WhenValueIsNotDefault_ThenShouldError()
+    public void WhenCheckingIfNotDefault_GivenValueIsNotDefault_ThenShouldError()
     {
         // Arrange
         System.DateTime value = System.DateTime.Now;
@@ -49,7 +49,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfNotDefault_WhenValueIsDefault_ThenShouldNotError()
+    public void WhenCheckingIfNotDefault_GivenValueIsDefault_ThenShouldNotError()
     {
         // Arrange
         System.DateTime value = default;
@@ -62,7 +62,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfEquals_WhenValueEquals_ThenShouldError()
+    public void WhenCheckingIfEquals_GivenValueEquals_ThenShouldError()
     {
         // Arrange
         int value = 5;
@@ -76,7 +76,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfEquals_WhenValueIsNotEqual_ThenShouldNotError()
+    public void WhenCheckingIfEquals_GivenValueIsNotEqual_ThenShouldNotError()
     {
         // Arrange
         int value = 5;
@@ -89,7 +89,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfNotEquals_WhenNotEquals_ThenShouldError()
+    public void WhenCheckingIfNotEquals_GivenNotEquals_ThenShouldError()
     {
         // Arrange
         int value = 5;
@@ -103,7 +103,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfNotEquals_WhenEquals_ThenShouldNotError()
+    public void WhenCheckingIfNotEquals_GivenEquals_ThenShouldNotError()
     {
         // Arrange
         int value = 5;
@@ -116,7 +116,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfEquals_WhenObjectReferenceEquals_ThenShouldError()
+    public void WhenCheckingIfEquals_GivenObjectReferenceEquals_ThenShouldError()
     {
         // Arrange
         var value1 = new object();
@@ -131,7 +131,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfEquals_WhenObjectReferenceIsNotEqual_ThenShouldNotError()
+    public void WhenCheckingIfEquals_GivenObjectReferenceIsNotEqual_ThenShouldNotError()
     {
         // Arrange
         var value1 = new object();
@@ -145,7 +145,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfNotEquals_WhenObjectReferenceIsNotEqual_ThenShouldError()
+    public void WhenCheckingIfNotEquals_GivenObjectReferenceIsNotEqual_ThenShouldError()
     {
         // Arrange
         var value1 = new object();
@@ -160,7 +160,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfNotEquals_WhenObjectReferenceEquals_ThenShouldNotError()
+    public void WhenCheckingIfNotEquals_GivenObjectReferenceEquals_ThenShouldNotError()
     {
         // Arrange
         var value1 = new object();
@@ -174,7 +174,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfEquals_WhenOverrideEqualsTypeEquals_ThenShouldError()
+    public void WhenCheckingIfEquals_GivenOverrideEqualsTypeEquals_ThenShouldError()
     {
         // Arrange
         var value1 = new OverrideEqualsType(1);
@@ -189,7 +189,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfEquals_WhenOverridequalsTypeIsNotEqual_ThenShouldNotError()
+    public void WhenCheckingIfEquals_GivenOverridequalsTypeIsNotEqual_ThenShouldNotError()
     {
         // Arrange
         var value1 = new OverrideEqualsType(1);
@@ -203,7 +203,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfNotEquals_WhenOverridequalsTypeIsNotEqual_ThenShouldError()
+    public void WhenCheckingIfNotEquals_GivenOverridequalsTypeIsNotEqual_ThenShouldError()
     {
         // Arrange
         var value1 = new OverrideEqualsType(1);
@@ -218,7 +218,7 @@ public class EqualitiesTests
     }
 
     [Test]
-    public void WhenCheckingIfNotEquals_WhenOverridequalsTypeEquals_ThenShouldNotError()
+    public void WhenCheckingIfNotEquals_GivenOverridequalsTypeEquals_ThenShouldNotError()
     {
         // Arrange
         var value1 = new OverrideEqualsType(1);

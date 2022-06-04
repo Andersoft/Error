@@ -8,7 +8,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Uri;
 public class UriPropertiesTests
 {
     [Test]
-    public void WhenCheckingIfUriPropertyHttp_WhenUriPropertyIsHttp_ThenShouldError()
+    public void WhenCheckingIfUriPropertyHttp_GivenUriPropertyIsHttp_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com") };
@@ -22,7 +22,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyHttp_WhenUriPropertyIsHttps_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertyHttp_GivenUriPropertyIsHttps_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("https://www.google.com") };
@@ -35,7 +35,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyNotHttp_WhenUriPropertyIsNotHttp_ThenShouldError()
+    public void WhenCheckingIfUriPropertyNotHttp_GivenUriPropertyIsNotHttp_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("https://www.google.com") };
@@ -49,7 +49,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyNotHttp_WhenUriPropertyIsHttp_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertyNotHttp_GivenUriPropertyIsHttp_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com") };
@@ -62,7 +62,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyHttps_WhenUriPropertyIsHttps_ThenShouldError()
+    public void WhenCheckingIfUriPropertyHttps_GivenUriPropertyIsHttps_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("https://www.google.com") };
@@ -76,7 +76,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyHttps_WhenUriPropertyIsHttp_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertyHttps_GivenUriPropertyIsHttp_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com") };
@@ -89,7 +89,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyNotHttps_WhenUriPropertyIsNotHttps_ThenShouldError()
+    public void WhenCheckingIfUriPropertyNotHttps_GivenUriPropertyIsNotHttps_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com") };
@@ -103,7 +103,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyNotHttps_WhenUriPropertyIsHttps_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertyNotHttps_GivenUriPropertyIsHttps_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("https://www.google.com") };
@@ -116,7 +116,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertySchemeEquals_WhenUriPropertySchemeEquals_ThenShouldError()
+    public void WhenCheckingIfUriPropertySchemeEquals_GivenUriPropertySchemeEquals_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri($"{System.Uri.UriSchemeGopher}://www.google.com") };
@@ -130,7 +130,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertySchemeEquals_WhenUriPropertySchemeNotEquals_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertySchemeEquals_GivenUriPropertySchemeNotEquals_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri($"{System.Uri.UriSchemeHttp}://www.google.com") };
@@ -143,7 +143,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertySchemeNotEquals_WhenUriPropertySchemeNotEquals_ThenShouldError()
+    public void WhenCheckingIfUriPropertySchemeNotEquals_GivenUriPropertySchemeNotEquals_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri($"{System.Uri.UriSchemeHttp}://www.google.com") };
@@ -157,7 +157,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertySchemeNotEquals_WhenUriPropertySchemeEquals_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertySchemeNotEquals_GivenUriPropertySchemeEquals_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri($"{System.Uri.UriSchemeGopher}://www.google.com") };
@@ -170,7 +170,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyAbsolute_WhenAbsolute_ThenShouldError()
+    public void WhenCheckingIfUriPropertyAbsolute_GivenAbsolute_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com") };
@@ -184,7 +184,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyAbsolute_WhenRelative_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertyAbsolute_GivenRelative_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("/path/to/file", UriKind.Relative) };
@@ -197,7 +197,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyRelative_WhenRelative_ThenShouldError()
+    public void WhenCheckingIfUriPropertyRelative_GivenRelative_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("/path/to/file", UriKind.Relative) };
@@ -211,7 +211,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyRelative_WhenAbsolute_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertyRelative_GivenAbsolute_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com") };
@@ -224,7 +224,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyNotAbsolute_WhenNotAbsolute_ThenShouldError()
+    public void WhenCheckingIfUriPropertyNotAbsolute_GivenNotAbsolute_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("/path/to/file", UriKind.Relative) };
@@ -238,7 +238,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyNotAbsolute_WhenAbsolute_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertyNotAbsolute_GivenAbsolute_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com") };
@@ -251,7 +251,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyNotRelative_WhenNotRelative_ThenShouldError()
+    public void WhenCheckingIfUriPropertyNotRelative_GivenNotRelative_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com") };
@@ -265,7 +265,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyNotRelative_WhenRelative_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertyNotRelative_GivenRelative_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("/path/to/file", UriKind.Relative) };
@@ -278,7 +278,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyPortEquals_WhenUriPropertyPortEquals_ThenShouldError()
+    public void WhenCheckingIfUriPropertyPortEquals_GivenUriPropertyPortEquals_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com:80") };
@@ -292,7 +292,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyPortEquals_WhenUriPropertyPortNotEquals_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertyPortEquals_GivenUriPropertyPortNotEquals_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com:8080") };
@@ -305,7 +305,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyPortNotEquals_WhenUriPropertyPortNotEquals_ThenShouldError()
+    public void WhenCheckingIfUriPropertyPortNotEquals_GivenUriPropertyPortNotEquals_ThenShouldError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com:8080") };
@@ -319,7 +319,7 @@ public class UriPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfUriPropertyPortNotEquals_WhenUriPropertyPortEquals_ThenShouldNotError()
+    public void WhenCheckingIfUriPropertyPortNotEquals_GivenUriPropertyPortEquals_ThenShouldNotError()
     {
         // Arrange
         var person = new { Uri = new System.Uri("http://www.google.com:80") };

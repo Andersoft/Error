@@ -69,7 +69,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
     }
 
     [Test]
-    public void WhenCheckingIfConditionTrue_WhenConditionIsTrue_ThenShouldError()
+    public void WhenCheckingIfConditionTrue_GivenConditionIsTrue_ThenShouldError()
     {
       // Arrange
       var value = "value";
@@ -83,7 +83,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
     }
 
     [Test]
-    public void WhenCheckingIfConditionTrue_WhenConditionIsFalse_ThenShouldNotError()
+    public void WhenCheckingIfConditionTrue_GivenConditionIsFalse_ThenShouldNotError()
     {
       // Arrange
       var value = "value";
@@ -97,7 +97,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
     }
 
     [Test]
-    public void WhenCheckingIfConditionFalse_WhenConditionIsTrue_ThenShouldNotError()
+    public void WhenCheckingIfConditionFalse_GivenConditionIsTrue_ThenShouldNotError()
     {
       // Arrange
       var value = "value";
@@ -111,7 +111,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
     }
 
     [Test]
-    public void WhenCheckingIfConditionFalse_WhenConditionIsFalse_ThenShouldError()
+    public void WhenCheckingIfConditionFalse_GivenConditionIsFalse_ThenShouldError()
     {
       // Arrange
       var value = "value";

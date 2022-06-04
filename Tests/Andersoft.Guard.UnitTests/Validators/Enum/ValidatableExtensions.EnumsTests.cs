@@ -8,7 +8,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Enum;
 public class EnumsTests
 {
     [Test]
-    public void WhenCheckingIfEnumOutOfRange_WhenValueIsOutOfRange_ThenShouldError()
+    public void WhenCheckingIfEnumOutOfRange_GivenValueIsOutOfRange_ThenShouldError()
     {
         // Arrange
         TestEnum value = (TestEnum)4;
@@ -22,7 +22,7 @@ public class EnumsTests
     }
 
     [Test]
-    public void WhenCheckingIfEnumOutOfRange_WhenValueIsInRange_ThenShouldNotError()
+    public void WhenCheckingIfEnumOutOfRange_GivenValueIsInRange_ThenShouldNotError()
     {
         // Arrange
         TestEnum value = TestEnum.Value1;

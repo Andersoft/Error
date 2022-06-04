@@ -62,7 +62,7 @@ public class EqualityPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyIsDefault_WhenValueIsDefault_ThenShouldError()
+    public void WhenCheckingIfPropertyIsDefault_GivenValueIsDefault_ThenShouldError()
     {
         // Arrange
         var person = new { BirthDate = default(System.DateTime) };
@@ -76,7 +76,7 @@ public class EqualityPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyIsDefault_WhenValueIsNotDefault_ThenShouldNotError()
+    public void WhenCheckingIfPropertyIsDefault_GivenValueIsNotDefault_ThenShouldNotError()
     {
         // Arrange
         var person = new { BirthDate = System.DateTime.Now };
@@ -89,7 +89,7 @@ public class EqualityPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyIsNotDefault_WhenValueIsNotDefault_ThenShouldError()
+    public void WhenCheckingIfPropertyIsNotDefault_GivenValueIsNotDefault_ThenShouldError()
     {
         // Arrange
         var person = new { BirthDate = System.DateTime.Now };
@@ -103,7 +103,7 @@ public class EqualityPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyIsNotDefault_WhenValueIsDefault_ThenShouldNotError()
+    public void WhenCheckingIfPropertyIsNotDefault_GivenValueIsDefault_ThenShouldNotError()
     {
         // Arrange
         var person = new { BirthDate = default(System.DateTime) };

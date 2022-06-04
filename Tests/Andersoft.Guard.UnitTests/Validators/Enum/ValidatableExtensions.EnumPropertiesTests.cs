@@ -8,7 +8,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Enum;
 public class EnumPropertiesTests
 {
     [Test]
-    public void WhenCheckingIfEnumPropertyOutOfRange_WhenValueIsOutOfRange_ThenShouldError()
+    public void WhenCheckingIfEnumPropertyOutOfRange_GivenValueIsOutOfRange_ThenShouldError()
     {
         // Arrange
         var person = new { PersonType = (PersonType)10 };
@@ -22,7 +22,7 @@ public class EnumPropertiesTests
     }
 
     [Test]
-    public void WhenCheckingIfEnumPropertyOutOfRange_WhenValueIsInRange_ThenShouldNotError()
+    public void WhenCheckingIfEnumPropertyOutOfRange_GivenValueIsInRange_ThenShouldNotError()
     {
         // Arrange
         var person = new { PersonType = PersonType.NotFunny };

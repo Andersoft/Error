@@ -8,7 +8,7 @@ namespace Andersoft.Guard.UnitTests.Validators.DateTime;
 public class DateTimesTests
 {
     [Test]
-    public void WhenCheckingIfUtc_WhenDateTimeIsUtc_ThenShouldError()
+    public void WhenCheckingIfUtc_GivenDateTimeIsUtc_ThenShouldError()
     {
         // Arrange
         var dateTime = System.DateTime.UtcNow;
@@ -22,7 +22,7 @@ public class DateTimesTests
     }
 
     [Test]
-    public void WhenCheckingIfUtc_WhenDateTimeIsNotUtc_ThenShouldNotError()
+    public void WhenCheckingIfUtc_GivenDateTimeIsNotUtc_ThenShouldNotError()
     {
         // Arrange
         var dateTime = System.DateTime.Now;
@@ -35,7 +35,7 @@ public class DateTimesTests
     }
 
     [Test]
-    public void WhenCheckingIfNotUtc_WhenDateTimeIsNotUtc_ThenShouldError()
+    public void WhenCheckingIfNotUtc_GivenDateTimeIsNotUtc_ThenShouldError()
     {
         // Arrange
         var dateTime = System.DateTime.Now;
@@ -49,7 +49,7 @@ public class DateTimesTests
     }
 
     [Test]
-    public void WhenCheckingIfNotUtc_WhenDateTimeIsUtc_ThenShouldNotError()
+    public void WhenCheckingIfNotUtc_GivenDateTimeIsUtc_ThenShouldNotError()
     {
         // Arrange
         var dateTime = System.DateTime.UtcNow;
@@ -62,7 +62,7 @@ public class DateTimesTests
     }
 
     [Test]
-    public void WhenCheckingIfDateTimeKind_WhenDateTimeKindEquals_ThenShouldError()
+    public void WhenCheckingIfDateTimeKind_GivenDateTimeKindEquals_ThenShouldError()
     {
         // Arrange
         var dateTime = System.DateTime.UtcNow;
@@ -76,7 +76,7 @@ public class DateTimesTests
     }
 
     [Test]
-    public void WhenCheckingIfDateTimeKind_WhenDateTimeKindNotEquals_ThenShouldNotError()
+    public void WhenCheckingIfDateTimeKind_GivenDateTimeKindNotEquals_ThenShouldNotError()
     {
         // Arrange
         var dateTime = System.DateTime.Now;
@@ -89,7 +89,7 @@ public class DateTimesTests
     }
 
     [Test]
-    public void WhenCheckingIfDateTimeKindNot_WhenDateTimeKindEquals_ThenShouldNotError()
+    public void WhenCheckingIfDateTimeKindNot_GivenDateTimeKindEquals_ThenShouldNotError()
     {
         // Arrange
         var dateTime = System.DateTime.UtcNow;
@@ -102,7 +102,7 @@ public class DateTimesTests
     }
 
     [Test]
-    public void WhenCheckingIfDateTimeKindNot_WhenDateTimeKindNotEquals_ThenShouldError()
+    public void WhenCheckingIfDateTimeKindNot_GivenDateTimeKindNotEquals_ThenShouldError()
     {
         // Arrange
         var dateTime = System.DateTime.Now;
