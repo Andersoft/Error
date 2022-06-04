@@ -1,14 +1,13 @@
 ﻿using Andersoft.Guard.Validators;
 using Andersoft.Guard.Validators.Booleans;
 using FluentAssertions;
-using LanguageExt;
 
-namespace Andersoft.Guard.valueTests.Validators.Booleans;
+namespace Andersoft.Guard.UnitTests.Validators.Booleans;
 
 public class BooleanPropertiesTests
 {
   [Test]
-  public void WhenCheckingIfPropertyTrue_WhenPropertyIsTrue_ThenShouldError()
+  public void WhenCheckingIfPropertyTrue_GivenPropertyIsIsTrue_ThenShouldError()
   {
     // Arrange
     var person = new { Id = 1 };
@@ -22,7 +21,7 @@ public class BooleanPropertiesTests
   }
 
   [Test]
-  public void WhenCheckingIfPropertyTrue_WhenPropertyIsFalse_ThenShouldNotError()
+  public void WhenCheckingIfPropertyTrue_GivenPropertyIsIsFalse_ThenShouldNotError()
   {
     // Arrange
     var person = new { Id = 1 };
@@ -36,7 +35,7 @@ public class BooleanPropertiesTests
   }
 
   [Test]
-  public void WhenCheckingIfPropertyFalse_WhenPropertyIsFalse_ThenShouldError()
+  public void WhenCheckingIfPropertyFalse_GivenPropertyIsIsFalse_ThenShouldError()
   {
     // Arrange
     var person = new { Id = 1 };
@@ -50,7 +49,7 @@ public class BooleanPropertiesTests
   }
 
   [Test]
-  public void WhenCheckingIfPropertyFalse_WhenPropertyIsTrue_ThenShouldNotError()
+  public void WhenCheckingIfPropertyFalse_GivenPropertyIsIsTrue_ThenShouldNotError()
   {
     // Arrange
     var person = new { Id = 1 };
