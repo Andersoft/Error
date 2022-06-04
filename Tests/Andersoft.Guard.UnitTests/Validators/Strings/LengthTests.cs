@@ -39,7 +39,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
     }
 
     [Test]
-    public void GivenValueUnderLength_WhenCheckingIfShorterThan_ShouldError()
+    public void GivenValueUnderLength_WhenCheckingIfShorterThan_ThenShouldError()
     {
       // Arrange
       string value = "value";
@@ -53,7 +53,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
     }
 
     [Test]
-    public void GivenValueNotUnderLength_WhenCheckingIfShorterThan_ShouldError()
+    public void GivenValueNotUnderLength_WhenCheckingIfShorterThan_ThenShouldError()
     {
       // Arrange
       string value = "value";
@@ -68,7 +68,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
     }
 
     [Test]
-    public void GivenValueEqualsLength_WhenCheckingForLengthEquals_ShouldError()
+    public void GivenValueEqualsLength_WhenCheckingForLengthEquals_ThenShouldError()
     {
       // Arrange
       string value = "value";
@@ -82,7 +82,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
     }
 
     [Test]
-    public void GivenValueNotEqualsLength_WhenCheckingForLengthEquals_ShouldError()
+    public void GivenValueNotEqualsLength_WhenCheckingForLengthEquals_ThenShouldError()
     {
       // Arrange
       string value = "value";
@@ -96,7 +96,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
     }
 
     [Test]
-    public void GivenValueLengthNotEquals_WhenLengthNotEquals_ShouldError()
+    public void GivenValueLengthNotEquals_WhenLengthNotEquals_ThenShouldError()
     {
       // Arrange
       string value = "value";
@@ -110,7 +110,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
     }
 
     [Test]
-    public void GivenValueLengthEquals_WhenLengthNotEquals_ShouldError()
+    public void GivenValueLengthEquals_WhenLengthNotEquals_ThenShouldError()
     {
       // Arrange
       string value = "value";

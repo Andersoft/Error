@@ -129,6 +129,6 @@ public class StringRegexTests
       .Match(success => success, error => default(string?));
 
     // Assert
-    result.Should().Be(value); ;
+    result.Should().Be(value);
   }
 }

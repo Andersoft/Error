@@ -8,7 +8,7 @@ namespace Andersoft.Guard.UnitTests.Validators.StringProperties;
 public class StringPropertiesEqualityTests
 {
     [Test]
-    public void WhenCheckingIfPropertyWhiteSpace_GivenPropertyDoesIsWhiteSpace_ShouldError()
+    public void WhenCheckingIfPropertyWhiteSpace_GivenPropertyDoesIsWhiteSpace_ThenShouldError()
     {
         // Arrange
         var person = new { Name = " " };
@@ -22,7 +22,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyWhiteSpace_GivenPropertyDoesIsNotWhiteSpace_ShouldNotError()
+    public void WhenCheckingIfPropertyWhiteSpace_GivenPropertyDoesIsNotWhiteSpace_ThenShouldNotError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
@@ -36,7 +36,7 @@ public class StringPropertiesEqualityTests
 }
 
     [Test]
-    public void WhenCheckingIfPropertyNullOrEmpty_GivenPropertyDoesIsNull_ShouldError()
+    public void WhenCheckingIfPropertyNullOrEmpty_GivenPropertyDoesIsNull_ThenShouldError()
     {
         // Arrange
         var person = new { Name = null as string };
@@ -50,7 +50,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyNullOrEmpty_GivenPropertyDoesIsEmpty_ShouldError()
+    public void WhenCheckingIfPropertyNullOrEmpty_GivenPropertyDoesIsEmpty_ThenShouldError()
     {
         // Arrange
         var person = new { Name = "" };
@@ -64,7 +64,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyNullOrEmpty_GivenPropertyDoesIsWhiteSpace_ShouldNotError()
+    public void WhenCheckingIfPropertyNullOrEmpty_GivenPropertyDoesIsWhiteSpace_ThenShouldNotError()
     {
         // Arrange
         var person = new { Name = " " };
@@ -78,7 +78,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyNullOrEmpty_GivenPropertyDoesNotEmpty_ShouldNotError()
+    public void WhenCheckingIfPropertyNullOrEmpty_GivenPropertyDoesNotEmpty_ThenShouldNotError()
     {
         // Arrange
         var person = new { Name = "Milan" };
@@ -92,7 +92,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyNullOrWhiteSpace_GivenPropertyDoesIsNull_ShouldError()
+    public void WhenCheckingIfPropertyNullOrWhiteSpace_GivenPropertyDoesIsNull_ThenShouldError()
     {
         // Arrange
         var person = new { Name = null as string };
@@ -106,7 +106,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyNullOrWhiteSpace_GivenPropertyDoesIsEmpty_ShouldError()
+    public void WhenCheckingIfPropertyNullOrWhiteSpace_GivenPropertyDoesIsEmpty_ThenShouldError()
     {
         // Arrange
         var person = new { Name = "" };
@@ -120,7 +120,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyNullOrWhiteSpace_GivenPropertyDoesIsWhiteSpace_ShouldError()
+    public void WhenCheckingIfPropertyNullOrWhiteSpace_GivenPropertyDoesIsWhiteSpace_ThenShouldError()
     {
         // Arrange
         var person = new { Name = " " };
@@ -134,7 +134,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyNullOrWhiteSpace_GivenPropertyDoesIsNotWhiteSpace_ShouldNotError()
+    public void WhenCheckingIfPropertyNullOrWhiteSpace_GivenPropertyDoesIsNotWhiteSpace_ThenShouldNotError()
     {
         // Arrange
         var person = new { Name = "Milan" };
@@ -148,7 +148,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyEmpty_GivenPropertyDoesIsEmpty_ShouldError()
+    public void WhenCheckingIfPropertyEmpty_GivenPropertyDoesIsEmpty_ThenShouldError()
     {
         // Arrange
         var person = new { Name = "" };
@@ -162,7 +162,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyEmpty_GivenPropertyDoesNotEmpty_ShouldNotError()
+    public void WhenCheckingIfPropertyEmpty_GivenPropertyDoesNotEmpty_ThenShouldNotError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
@@ -176,7 +176,7 @@ public class StringPropertiesEqualityTests
 }
 
     [Test]
-    public void WhenCheckingIfPropertyEquals_GivenPropertyDoesEquals_ShouldError()
+    public void WhenCheckingIfPropertyEquals_GivenPropertyDoesEquals_ThenShouldError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
@@ -190,7 +190,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyEquals_GivenPropertyDoesNotEquals_ShouldNotError()
+    public void WhenCheckingIfPropertyEquals_GivenPropertyDoesNotEquals_ThenShouldNotError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
@@ -238,7 +238,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyNotEquals_GivenPropertyDoesNotEquals_ShouldError()
+    public void WhenCheckingIfPropertyNotEquals_GivenPropertyDoesNotEquals_ThenShouldError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
@@ -252,7 +252,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyNotEquals_GivenPropertyDoesEquals_ShouldNotError()
+    public void WhenCheckingIfPropertyNotEquals_GivenPropertyDoesEquals_ThenShouldNotError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
@@ -300,7 +300,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyEqualsIgnoreCase_GivenPropertyDoesEqualsSameCase_ShouldError()
+    public void WhenCheckingIfPropertyEqualsIgnoreCase_GivenPropertyDoesEqualsSameCase_ThenShouldError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
@@ -314,7 +314,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyEqualsIgnoreCase_GivenPropertyDoesEqualsDifferentCase_ShouldError()
+    public void WhenCheckingIfPropertyEqualsIgnoreCase_GivenPropertyDoesEqualsDifferentCase_ThenShouldError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
@@ -328,7 +328,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyEqualsIgnoreCase_GivenPropertyDoesNotEquals_ShouldNotError()
+    public void WhenCheckingIfPropertyEqualsIgnoreCase_GivenPropertyDoesNotEquals_ThenShouldNotError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
@@ -342,7 +342,7 @@ public class StringPropertiesEqualityTests
 }
 
     [Test]
-    public void WhenCheckingIfPropertyNotEqualsIgnoreCase_GivenPropertyDoesNotEquals_ShouldError()
+    public void WhenCheckingIfPropertyNotEqualsIgnoreCase_GivenPropertyDoesNotEquals_ThenShouldError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
@@ -356,7 +356,7 @@ public class StringPropertiesEqualityTests
     }
 
     [Test]
-    public void WhenCheckingIfPropertyNotEqualsIgnoreCase_GivenPropertyDoesEqualsSameCase_ShouldNotError()
+    public void WhenCheckingIfPropertyNotEqualsIgnoreCase_GivenPropertyDoesEqualsSameCase_ThenShouldNotError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
@@ -370,7 +370,7 @@ public class StringPropertiesEqualityTests
 }
 
     [Test]
-    public void WhenCheckingIfPropertyNotEqualsIgnoreCase_GivenPropertyDoesEqualsDifferentCase_ShouldNotError()
+    public void WhenCheckingIfPropertyNotEqualsIgnoreCase_GivenPropertyDoesEqualsDifferentCase_ThenShouldNotError()
     {
         // Arrange
         var person = new { Name = "Anderson" };
