@@ -37,10 +37,10 @@ public class StringPropertiesRegexTests
 
         // Act
         var result = person.Error().IfMatches(p => p.Name, regexPattern, regexOptions)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     
@@ -73,10 +73,10 @@ public class StringPropertiesRegexTests
 
         // Act
         var result = person.Error().IfMatches(p => p.Name, regex)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     
@@ -107,10 +107,10 @@ public class StringPropertiesRegexTests
 
         // Act
         var result = person.Error().IfNotMatches(p => p.Name, regexPattern, regexOptions)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     
@@ -143,9 +143,9 @@ public class StringPropertiesRegexTests
 
         // Act
         var result = person.Error().IfNotMatches(p => p.Name, regex)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 }

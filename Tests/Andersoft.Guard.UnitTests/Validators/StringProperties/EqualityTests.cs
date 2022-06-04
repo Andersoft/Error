@@ -29,10 +29,10 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfWhiteSpace(p => p.Name)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -71,10 +71,10 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNullOrEmpty(p => p.Name)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>(); ;
+        result.Should().Be(person); ;
     }
 
     [Test]
@@ -85,10 +85,10 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNullOrEmpty(p => p.Name)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>(); ;
+        result.Should().Be(person); ;
     }
 
     [Test]
@@ -141,10 +141,10 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNullOrWhiteSpace(p => p.Name)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>(); 
+        result.Should().Be(person); 
     }
 
     [Test]
@@ -169,10 +169,10 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfEmpty(p => p.Name)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -197,10 +197,10 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfEquals(p => p.Name, "Amichai2")
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>(); 
+        result.Should().Be(person); 
     }
 
     
@@ -231,10 +231,10 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfEquals(p => p.Name, otherValue, comparisonType)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
     }
 
     [Test]
@@ -259,10 +259,10 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNotEquals(p => p.Name, "Anderson")
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
     }
 
     
@@ -276,10 +276,10 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNotEquals(p => p.Name, otherValue, comparisonType)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>(); 
+        result.Should().Be(person); 
     }
 
     
@@ -335,10 +335,10 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfEqualsIgnoreCase(p => p.Name, "Jordan")
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -363,10 +363,10 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNotEqualsIgnoreCase(p => p.Name, "Anderson")
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -377,9 +377,9 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNotEqualsIgnoreCase(p => p.Name, "ANDERSON")
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 }

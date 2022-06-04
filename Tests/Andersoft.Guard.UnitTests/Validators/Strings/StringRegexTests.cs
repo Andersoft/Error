@@ -30,10 +30,10 @@ public class StringRegexTests
   {
     // Act
     var result = value.Error().IfMatches(regexPattern, regexOptions)
-      .Match(unit => unit, error => default(Unit?));
+      .Match(success => success, error => default(string?));
 
     // Assert
-    result.Should().BeOfType<Unit>(); ;
+    result.Should().Be(value); ;
   }
 
   
@@ -64,10 +64,10 @@ public class StringRegexTests
 
     // Act
     var result = value.Error().IfMatches(regex)
-      .Match(unit => unit, error => default(Unit?));
+      .Match(success => success, error => default(string?));
 
     // Assert
-    result.Should().BeOfType<Unit>(); ;
+    result.Should().Be(value); ;
   }
 
   
@@ -92,10 +92,10 @@ public class StringRegexTests
   {
     // Act
     var result = value.Error().IfNotMatches(regexPattern, regexOptions)
-      .Match(unit => unit, error => default(Unit?));
+      .Match(success => success, error => default(string?));
 
     // Assert
-    result.Should().BeOfType<Unit>(); ;
+    result.Should().Be(value); ;
   }
 
   
@@ -126,9 +126,9 @@ public class StringRegexTests
 
     // Act
     var result = value.Error().IfNotMatches(regex)
-      .Match(unit => unit, error => default(Unit?));
+      .Match(success => success, error => default(string?));
 
     // Assert
-    result.Should().BeOfType<Unit>(); ;
+    result.Should().Be(value); ;
   }
 }

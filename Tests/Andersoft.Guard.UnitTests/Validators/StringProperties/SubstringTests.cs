@@ -15,10 +15,10 @@ public class StringPropertiesSubstringTests
         var person = new { Name = "John" };
         // Act
         var result = person.Error().IfEndsWith(p => p.Name, "Jo")
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -71,10 +71,10 @@ public class StringPropertiesSubstringTests
 
         // Act
         var result = person.Error().IfNotEndsWith(p => p.Name, "HN", StringComparison.OrdinalIgnoreCase)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -85,10 +85,10 @@ public class StringPropertiesSubstringTests
 
         // Act
         var result = person.Error().IfNotEndsWith(p => p.Name, "hn")
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -99,10 +99,10 @@ public class StringPropertiesSubstringTests
 
         // Act
         var result = person.Error().IfStartsWith(p => p.Name, "hh")
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -155,10 +155,10 @@ public class StringPropertiesSubstringTests
 
         // Act
         var result = person.Error().IfNotStartsWith(p => p.Name, "Jo")
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -169,10 +169,10 @@ public class StringPropertiesSubstringTests
 
         // Act
         var result = person.Error().IfNotStartsWith(p => p.Name, "JO", StringComparison.OrdinalIgnoreCase)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -197,10 +197,10 @@ public class StringPropertiesSubstringTests
 
         // Act
         var result = person.Error().IfContains(p => p.Name, "Oh")
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -225,10 +225,10 @@ public class StringPropertiesSubstringTests
 
         // Act
         var result = person.Error().IfNotContains(p => p.Name, "oh")
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
 
@@ -259,10 +259,10 @@ public class StringPropertiesSubstringTests
 
         // Act
         var result = person.Error().IfContains(p => p.Name, otherValue, comparisonType)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
 
@@ -293,9 +293,9 @@ public class StringPropertiesSubstringTests
 
         // Act
         var result = person.Error().IfNotContains(p => p.Name, otherValue, comparisonType)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 }

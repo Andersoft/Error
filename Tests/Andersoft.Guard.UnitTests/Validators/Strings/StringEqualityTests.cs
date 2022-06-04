@@ -34,10 +34,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
 
       // Act
       var result =  value.Error().IfWhiteSpace()
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(string?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().Be(value);
     }
 
     [Test]
@@ -62,10 +62,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
 
       // Act
       var result =  value.Error().IfEmpty()
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(string?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().Be(value);
     }
 
     [Test]
@@ -90,10 +90,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
 
       // Act
       var result =  value.Error().IfEquals("VALUE")
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(string?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().Be(value);
     }
 
     [TestCase("value", "VALUE", StringComparison.OrdinalIgnoreCase)]
@@ -117,10 +117,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
     {
       // Act
       var result =  value.Error().IfEquals(otherValue, comparisonType)
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(string?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().Be(value);
     }
 
     [Test]
@@ -159,10 +159,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
 
       // Act
       var result =  value.Error().IfEqualsIgnoreCase("different value")
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(string?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().Be(value);
     }
 
     [Test]
@@ -187,10 +187,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
     {
       // Act
       var result =  value.Error().IfNotEquals(otherValue, comparisonType)
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(string?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().Be(value);
     }
 
     
@@ -215,10 +215,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
 
       // Act
       var result =  value.Error().IfNotEquals("value")
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(string?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().Be(value);
     }
 
     [Test]
@@ -243,10 +243,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
 
       // Act
       var result =  value.Error().IfNotEqualsIgnoreCase("value")
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(string?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().Be(value);
     }
 
     [Test]
@@ -257,10 +257,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
 
       // Act
       var result =  value.Error().IfNotEqualsIgnoreCase("VALUE")
-        .Match(unit => unit, error => default(Unit?));
+        .Match(success => success, error => default(string?));
 
       // Assert
-      result.Should().BeOfType<Unit>();
+      result.Should().Be(value);
     }
   }
 }

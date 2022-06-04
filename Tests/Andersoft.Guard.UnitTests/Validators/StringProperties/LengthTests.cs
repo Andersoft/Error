@@ -30,10 +30,10 @@ public class StringPropertiesLengthTests
 
         // Act
         var result = person.Error().IfLongerThan(p => p.Name, 10)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -58,10 +58,10 @@ public class StringPropertiesLengthTests
 
         // Act
         var result = person.Error().IfShorterThan(p => p.Name, 3)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -86,10 +86,10 @@ public class StringPropertiesLengthTests
 
         // Act
         var result = person.Error().IfLengthEquals(p => p.Name, 100)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 
     [Test]
@@ -114,9 +114,9 @@ public class StringPropertiesLengthTests
 
         // Act
         var result = person.Error().IfLengthNotEquals(p => p.Name, 8)
-          .Match(unit => unit, error => default(Unit?));
+          .Match(success => success, error => null);
 
         // Assert
-        result.Should().BeOfType<Unit>();
+        result.Should().Be(person);
 }
 }
