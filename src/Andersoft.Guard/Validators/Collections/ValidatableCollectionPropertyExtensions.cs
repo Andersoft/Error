@@ -8,9 +8,10 @@ public static class ValidatableCollectionPropertyExtensions
   public static Result<Validatable<TValue>> IfEmpty<TValue, TCollection>(
     this Result<Validatable<TValue>> result,
     Func<TValue, TCollection[]> func,
-    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
+    [CallerArgumentExpression("func")] string? funcProperty = null)
+    where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -24,11 +25,13 @@ public static class ValidatableCollectionPropertyExtensions
     }
   }
 
-  public static Result<Validatable<TValue>> IfNotEmpty<TValue, TCollection>(this Result<Validatable<TValue>> result,
+  public static Result<Validatable<TValue>> IfNotEmpty<TValue, TCollection>(
+    this Result<Validatable<TValue>> result,
     Func<TValue, TCollection[]> func,
-    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
+    [CallerArgumentExpression("func")] string? funcProperty = null)
+    where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -41,35 +44,22 @@ public static class ValidatableCollectionPropertyExtensions
       return validatable;
     }
   }
-  public static Result<Validatable<TValue>> IfCountEquals<TValue, TCollection>(this Result<Validatable<TValue>> result, Func<TValue, TCollection[]> func,
+
+  public static Result<Validatable<TValue>> IfCountEquals<TValue, TCollection>(
+    this Result<Validatable<TValue>> result,
+    Func<TValue, TCollection[]> func,
     int count,
-    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
+    [CallerArgumentExpression("func")] string? funcProperty = null)
+    where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
       if (func(validatable.Value).Length == count)
       {
         return new Result<Validatable<TValue>>(new ArgumentException(
-          $"Collection count should not be equal to {count}.", $"{validatable.ParamName}: {funcProperty}"));
-      }
-
-      return validatable;
-    }
-  }
-
-  public static Result<Validatable<TValue>> IfCountNotEquals<TValue, TCollection>(this Result<Validatable<TValue>> result, Func<TValue, TCollection[]> func,
-    int count,
-    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
-  {
-    return result.Match(Validate, error => new(error));
-
-    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
-    {
-      if (func(validatable.Value).Length != count)
-      {
-        return new Result<Validatable<TValue>>(new ArgumentException($"Collection count should be equal to {count}.",
+          $"Collection count should not be equal to {count}.",
           $"{validatable.ParamName}: {funcProperty}"));
       }
 
@@ -77,27 +67,58 @@ public static class ValidatableCollectionPropertyExtensions
     }
   }
 
-  public static Result<Validatable<TValue>> IfCountGreaterThan<TValue, TCollection>(this Result<Validatable<TValue>> result, Func<TValue, TCollection[]> func,
+  public static Result<Validatable<TValue>> IfCountNotEquals<TValue, TCollection>(
+    this Result<Validatable<TValue>> result,
+    Func<TValue, TCollection[]> func,
     int count,
-    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
+    [CallerArgumentExpression("func")] string? funcProperty = null)
+    where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
-      if (func(validatable.Value).Length > count)
+      if (func(validatable.Value).Length != count)
       {
-        return new Result<Validatable<TValue>>(new ArgumentException($"Collection count should not be greater than {count}.", $"{validatable.ParamName}: {funcProperty}"));
+        return new Result<Validatable<TValue>>(new ArgumentException(
+          $"Collection count should be equal to {count}.",
+          $"{validatable.ParamName}: {funcProperty}"));
       }
 
       return validatable;
     }
   }
-  public static Result<Validatable<TValue>> IfCountLessThan<TValue, TCollection>(this Result<Validatable<TValue>> result, Func<TValue, TCollection[]> func,
+
+  public static Result<Validatable<TValue>> IfCountGreaterThan<TValue, TCollection>(
+    this Result<Validatable<TValue>> result,
+    Func<TValue, TCollection[]> func,
     int count,
-    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
+    [CallerArgumentExpression("func")] string? funcProperty = null)
+    where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
+
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
+    {
+      if (func(validatable.Value).Length > count)
+      {
+        return new Result<Validatable<TValue>>(new ArgumentException(
+          $"Collection count should not be greater than {count}.",
+          $"{validatable.ParamName}: {funcProperty}"));
+      }
+
+      return validatable;
+    }
+  }
+
+  public static Result<Validatable<TValue>> IfCountLessThan<TValue, TCollection>(
+    this Result<Validatable<TValue>> result,
+    Func<TValue, TCollection[]> func,
+    int count,
+    [CallerArgumentExpression("func")] string? funcProperty = null)
+    where TValue : notnull
+  {
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -109,11 +130,14 @@ public static class ValidatableCollectionPropertyExtensions
       return validatable;
     }
   }
-  public static Result<Validatable<TValue>> IfHasNullElements<TValue, TCollection>(this Result<Validatable<TValue>> result,
+
+  public static Result<Validatable<TValue>> IfHasNullElements<TValue, TCollection>(
+    this Result<Validatable<TValue>> result,
     Func<TValue, TCollection[]> func,
-    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
+    [CallerArgumentExpression("func")] string? funcProperty = null)
+    where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -125,11 +149,15 @@ public static class ValidatableCollectionPropertyExtensions
       return validatable;
     }
   }
-  public static Result<Validatable<TValue>> IfContains<TValue, TCollection>(this Result<Validatable<TValue>> result, Func<TValue, TCollection[]> func,
+
+  public static Result<Validatable<TValue>> IfContains<TValue, TCollection>(
+    this Result<Validatable<TValue>> result,
+    Func<TValue, TCollection[]> func,
     TCollection needle,
-    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
+    [CallerArgumentExpression("func")] string? funcProperty = null)
+    where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -142,17 +170,21 @@ public static class ValidatableCollectionPropertyExtensions
     }
   }
 
-  public static Result<Validatable<TValue>> IfNotContains<TValue, TCollection>(this Result<Validatable<TValue>> result, Func<TValue, TCollection[]> func,
+  public static Result<Validatable<TValue>> IfNotContains<TValue, TCollection>(
+    this Result<Validatable<TValue>> result,
+    Func<TValue, TCollection[]> func,
     TCollection needle,
-    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
+    [CallerArgumentExpression("func")] string? funcProperty = null)
+    where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
       if (!func(validatable.Value).Contains(needle))
       {
-        return new Result<Validatable<TValue>>(new ArgumentException("Collection should contain element.",
+        return new Result<Validatable<TValue>>(new ArgumentException(
+          "Collection should contain element.",
           $"{validatable.ParamName}: {funcProperty}"));
       }
 

@@ -6,7 +6,7 @@ public static class ValidatableUriExtensions
 {
   public static Result<Validatable<Uri>> IfScheme(this Result<Validatable<Uri>> result, string scheme)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<Uri>>(error));
 
     Result<Validatable<Uri>> Validate(Validatable<Uri> validatable)
     {
@@ -22,7 +22,7 @@ public static class ValidatableUriExtensions
 
   public static Result<Validatable<Uri>> IfNotScheme(this Result<Validatable<Uri>> result, string scheme)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<Uri>>(error));
 
     Result<Validatable<Uri>> Validate(Validatable<Uri> validatable)
     {
@@ -37,7 +37,7 @@ public static class ValidatableUriExtensions
 
   public static Result<Validatable<Uri>> IfAbsolute(this Result<Validatable<Uri>> result)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<Uri>>(error));
 
     Result<Validatable<Uri>> Validate(Validatable<Uri> validatable)
     {
@@ -57,7 +57,7 @@ public static class ValidatableUriExtensions
 
   public static Result<Validatable<Uri>> IfRelative(this Result<Validatable<Uri>> result)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<Uri>>(error));
 
     Result<Validatable<Uri>> Validate(Validatable<Uri> validatable)
     {
@@ -96,7 +96,7 @@ public static class ValidatableUriExtensions
   }
   public static Result<Validatable<Uri>> IfPort(this Result<Validatable<Uri>> result, int port)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<Uri>>(error));
 
     Result<Validatable<Uri>> Validate(Validatable<Uri> validatable)
     {
@@ -111,7 +111,7 @@ public static class ValidatableUriExtensions
 
   public static Result<Validatable<Uri>> IfNotPort(this Result<Validatable<Uri>> result, int port)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<Uri>>(error));
 
     Result<Validatable<Uri>> Validate(Validatable<Uri> validatable)
     {

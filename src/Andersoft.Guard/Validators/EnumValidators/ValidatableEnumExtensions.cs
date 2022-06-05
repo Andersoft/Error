@@ -7,7 +7,7 @@ public static class ValidatableEnumExtensions
   public static Result<Validatable<TValue>> IfOutOfRange<TValue>(this Result<Validatable<TValue>> result)
   where TValue : struct, Enum
   {
-    return result.Match(Validate, error => new (error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {

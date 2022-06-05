@@ -5,9 +5,10 @@ namespace Andersoft.Guard.Validators.Comparable;
 public static class ValidatableComparableExtensions
 {
 
-  public static Result<Validatable<TValue>> IfGreaterThan<TValue>(this Result<Validatable<TValue>> result, TValue other) where TValue : notnull
+  public static Result<Validatable<TValue>> IfGreaterThan<TValue>(this Result<Validatable<TValue>> result, TValue other)
+    where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -23,9 +24,10 @@ public static class ValidatableComparableExtensions
     }
   }
 
-  public static Result<Validatable<TValue>> IfLessThan<TValue>(this Result<Validatable<TValue>> result, TValue other) where TValue : notnull
+  public static Result<Validatable<TValue>> IfLessThan<TValue>(this Result<Validatable<TValue>> result, TValue other)
+    where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -41,12 +43,14 @@ public static class ValidatableComparableExtensions
     }
   }
 
-  public static Result<Validatable<TValue>> IfPositive<TValue>(this Result<Validatable<TValue>> result) where TValue : notnull
+  public static Result<Validatable<TValue>> IfPositive<TValue>(this Result<Validatable<TValue>> result)
+    where TValue : notnull
   {
     return IfGreaterThan(result, default!);
   }
 
-  public static Result<Validatable<TValue>> IfNegative<TValue>(this Result<Validatable<TValue>> result) where TValue : notnull
+  public static Result<Validatable<TValue>> IfNegative<TValue>(this Result<Validatable<TValue>> result)
+    where TValue : notnull
   {
     return IfLessThan(result, default!);
   }
@@ -56,7 +60,7 @@ public static class ValidatableComparableExtensions
     TValue min,
     TValue max) where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {

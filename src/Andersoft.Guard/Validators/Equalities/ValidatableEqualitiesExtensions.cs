@@ -7,7 +7,7 @@ public static class ValidatableEqualitiesExtensions
   public static Result<Validatable<TValue>> IfEquals<TValue>(this Result<Validatable<TValue>> result, TValue other)
     where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -24,7 +24,7 @@ public static class ValidatableEqualitiesExtensions
   private static Result<Validatable<TValue>> IfEquals<TValue>(this Result<Validatable<TValue>> result, TValue other, string errorMessage)
     where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -40,7 +40,7 @@ public static class ValidatableEqualitiesExtensions
   public static Result<Validatable<TValue>> IfNotEquals<TValue>(this Result<Validatable<TValue>> result, TValue other)
     where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -57,7 +57,7 @@ public static class ValidatableEqualitiesExtensions
   private static Result<Validatable<TValue>> IfNotEquals<TValue>(this Result<Validatable<TValue>> result, TValue other, string errorMessage)
     where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {

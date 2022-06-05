@@ -11,7 +11,7 @@ public static class ValidatableUriPropertyExtensions
     string scheme,
     [CallerArgumentExpression("func")]string? funcName = null) where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -31,7 +31,7 @@ public static class ValidatableUriPropertyExtensions
     string scheme, 
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -50,7 +50,7 @@ public static class ValidatableUriPropertyExtensions
     Func<TValue, Uri> func, 
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -77,7 +77,7 @@ public static class ValidatableUriPropertyExtensions
     Func<TValue, Uri> func, 
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -136,7 +136,7 @@ public static class ValidatableUriPropertyExtensions
     int port, 
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
@@ -156,7 +156,7 @@ public static class ValidatableUriPropertyExtensions
     int port, 
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {

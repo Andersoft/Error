@@ -8,10 +8,11 @@ public static class ValidatableEnumPropertyExtensions
   public static Result<Validatable<TValue>> IfOutOfRange<TValue, TProperty>(
     this Result<Validatable<TValue>> result,
     Func<TValue, TProperty> func,
-    [CallerArgumentExpression("func")]string? funcName = null) where TValue : notnull
+    [CallerArgumentExpression("func")]string? funcName = null)
+    where TValue : notnull
     where TProperty : struct, Enum
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
     Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {

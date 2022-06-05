@@ -7,7 +7,7 @@ namespace Andersoft.Guard.Validators.Booleans
   {
     public static Result<Validatable<bool>> IfTrue(this Result<Validatable<bool>> result)
     {
-      return result.Match(Validate, error => new(error));
+      return result.Match(Validate, error => new Result<Validatable<bool>>(error));
 
       Result<Validatable<bool>> Validate(Validatable<bool> validatable)
       {
@@ -22,7 +22,7 @@ namespace Andersoft.Guard.Validators.Booleans
 
     public static Result<Validatable<bool>> IfFalse(this Result<Validatable<bool>> result)
     {
-      return result.Match(Validate, error => new(error));
+      return result.Match(Validate, error => new Result<Validatable<bool>>(error));
 
       Result<Validatable<bool>> Validate(Validatable<bool> validatable)
       {
@@ -38,9 +38,10 @@ namespace Andersoft.Guard.Validators.Booleans
     public static Result<Validatable<TValue>> IfFalse<TValue>(
       this Result<Validatable<TValue>> result,
       Func<TValue, bool> func,
-      [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
+      [CallerArgumentExpression("func")] string? funcName = null)
+      where TValue : notnull
     {
-      return result.Match(Validate, error => new(error));
+      return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
       Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
       {
@@ -56,9 +57,10 @@ namespace Andersoft.Guard.Validators.Booleans
     public static Result<Validatable<TValue>> IfTrue<TValue>(
       this Result<Validatable<TValue>> result,
       Func<TValue, bool> func,
-      [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
+      [CallerArgumentExpression("func")] string? funcName = null)
+      where TValue : notnull
     {
-      return result.Match(Validate, error => new(error));
+      return result.Match(Validate, error => new Result<Validatable<TValue>>(error));
 
       Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
       {
@@ -70,6 +72,5 @@ namespace Andersoft.Guard.Validators.Booleans
         return validatable;
       }
     }
-
   }
 }

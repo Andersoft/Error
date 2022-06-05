@@ -8,7 +8,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfLongerThan(this Result<Validatable<string>> result, int length)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -24,7 +24,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfShorterThan(this Result<Validatable<string>> result, int length)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -38,7 +38,7 @@ public static class ValidatableStringExtensions
   }
   public static Result<Validatable<string>> IfLengthEquals(this Result<Validatable<string>> result, int length)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -52,7 +52,7 @@ public static class ValidatableStringExtensions
   }
   public static Result<Validatable<string>> IfLengthNotEquals(this Result<Validatable<string>> result, int length)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -67,7 +67,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfWhiteSpace(this Result<Validatable<string>> result)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -82,7 +82,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfEmpty(this Result<Validatable<string>> result)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -106,7 +106,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfEquals(this Result<Validatable<string>> result, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -121,7 +121,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfNotEquals(this Result<Validatable<string>> result, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -136,7 +136,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfEndsWith(this Result<Validatable<string>> result, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -151,7 +151,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfNotEndsWith(this Result<Validatable<string>> result, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -166,7 +166,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfStartsWith(this Result<Validatable<string>> result, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -181,7 +181,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfNotStartsWith(this Result<Validatable<string>> result, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -195,7 +195,7 @@ public static class ValidatableStringExtensions
   }
   public static Result<Validatable<string>> IfContains(this Result<Validatable<string>> result, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -209,7 +209,7 @@ public static class ValidatableStringExtensions
   }
   public static Result<Validatable<string>> IfNotContains(this Result<Validatable<string>> result, string otherString, StringComparison comparisonType = StringComparison.Ordinal)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -224,7 +224,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfMatches(this Result<Validatable<string>> result, Regex regex)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -239,7 +239,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfNotMatches(this Result<Validatable<string>> result, Regex regex)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -254,7 +254,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfMatches(this Result<Validatable<string>> result, string regexPattern, RegexOptions regexOptions)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
@@ -271,7 +271,7 @@ public static class ValidatableStringExtensions
 
   public static Result<Validatable<string>> IfNotMatches(this Result<Validatable<string>> result, string regexPattern, RegexOptions regexOptions)
   {
-    return result.Match(Validate, error => new(error));
+    return result.Match(Validate, error => new Result<Validatable<string>>(error));
 
     Result<Validatable<string>> Validate(Validatable<string> validatable)
     {
