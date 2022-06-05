@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using LanguageExt.Common;
 
-namespace Andersoft.Guard.Validators.Equalities;
+namespace Andersoft.Error.Validators.Equalities;
 
 public static class ValidatableEqualitiesPropertyExtensions
 {

@@ -1,8 +1,8 @@
-using Andersoft.Guard.Validators;
-using Andersoft.Guard.Validators.Strings;
+using Andersoft.Error.Validators;
+using Andersoft.Error.Validators.Strings;
 using FluentAssertions;
 
-namespace Andersoft.Guard.UnitTests.Validators.StringProperties;
+namespace Andersoft.Error.UnitTests.Validators.StringProperties;
 
 
 public class StringPropertiesLengthTests

@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using LanguageExt.Common;
 
-namespace Andersoft.Guard.Validators.Comparable;
+namespace Andersoft.Error.Validators.Comparable;
 
 public static class ValidatableComparablePropertiesExtensions
 {

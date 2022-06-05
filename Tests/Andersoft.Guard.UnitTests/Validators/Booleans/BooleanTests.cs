@@ -1,8 +1,8 @@
-﻿using Andersoft.Guard.Validators;
-using Andersoft.Guard.Validators.Booleans;
+﻿using Andersoft.Error.Validators;
+using Andersoft.Error.Validators.Booleans;
 using FluentAssertions;
 
-namespace Andersoft.Guard.UnitTests.Validators.Booleans
+namespace Andersoft.Error.UnitTests.Validators.Booleans
 {
   public class BooleansTests
   {

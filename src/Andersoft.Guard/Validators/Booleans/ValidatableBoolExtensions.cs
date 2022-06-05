@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using LanguageExt.Common;
 
-namespace Andersoft.Guard.Validators.Booleans
+namespace Andersoft.Error.Validators.Booleans
 {
   public static class ValidatableBoolExtensions
   {

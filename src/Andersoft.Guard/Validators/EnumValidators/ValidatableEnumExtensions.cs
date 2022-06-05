@@ -1,6 +1,6 @@
 ﻿using LanguageExt.Common;
 
-namespace Andersoft.Guard.Validators.EnumValidators;
+namespace Andersoft.Error.Validators.EnumValidators;
 
 public static class ValidatableEnumExtensions
 {

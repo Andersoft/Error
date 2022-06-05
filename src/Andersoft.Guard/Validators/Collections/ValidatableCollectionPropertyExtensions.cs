@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using LanguageExt.Common;
 
-namespace Andersoft.Guard.Validators.Collections;
+namespace Andersoft.Error.Validators.Collections;
 
 public static class ValidatableCollectionPropertyExtensions
 {

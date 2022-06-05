@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using LanguageExt.Common;
 
-namespace Andersoft.Guard.Validators.Strings;
+namespace Andersoft.Error.Validators.Strings;
 
 public static class ValidatableStringExtensions
 {

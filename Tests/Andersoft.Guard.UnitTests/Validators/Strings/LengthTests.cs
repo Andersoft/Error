@@ -1,8 +1,8 @@
-using Andersoft.Guard.Validators;
-using Andersoft.Guard.Validators.Strings;
+using Andersoft.Error.Validators;
+using Andersoft.Error.Validators.Strings;
 using FluentAssertions;
 
-namespace Andersoft.Guard.UnitTests.Validators.Strings
+namespace Andersoft.Error.UnitTests.Validators.Strings
 {
   public class LengthTests
   {
@@ -28,8 +28,8 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
 
       // Act
       var result = value.Error()
-                        .IfLongerThan(100)
-                        .Match(success => success.Value, error => default!);
+        .IfLongerThan(100)
+        .Match(success => success.Value, error => default!);
 
       // Assert
       result.Should().Be(value);

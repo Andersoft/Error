@@ -1,6 +1,6 @@
 ﻿using LanguageExt.Common;
 
-namespace Andersoft.Guard.Validators.Equalities;
+namespace Andersoft.Error.Validators.Equalities;
 
 public static class ValidatableEqualitiesExtensions
 {

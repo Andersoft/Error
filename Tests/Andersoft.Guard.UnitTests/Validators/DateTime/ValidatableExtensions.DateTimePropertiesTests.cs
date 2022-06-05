@@ -1,8 +1,8 @@
-using Andersoft.Guard.Validators;
-using Andersoft.Guard.Validators.DateTimeValidators;
+using Andersoft.Error.Validators;
+using Andersoft.Error.Validators.DateTimeValidators;
 using FluentAssertions;
 
-namespace Andersoft.Guard.UnitTests.Validators.DateTime;
+namespace Andersoft.Error.UnitTests.Validators.DateTime;
 
 
 public class DateTimePropertiesTests

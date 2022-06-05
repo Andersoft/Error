@@ -1,8 +1,8 @@
-using Andersoft.Guard.Validators;
-using Andersoft.Guard.Validators.Collections;
+using Andersoft.Error.Validators;
+using Andersoft.Error.Validators.Collections;
 using FluentAssertions;
 
-namespace Andersoft.Guard.UnitTests.Validators.Collections;
+namespace Andersoft.Error.UnitTests.Validators.Collections;
 
 
 public class CollectionPropertiesTests

@@ -1,9 +1,9 @@
 ﻿using System.Text.RegularExpressions;
-using Andersoft.Guard.Validators;
-using Andersoft.Guard.Validators.Strings;
+using Andersoft.Error.Validators;
+using Andersoft.Error.Validators.Strings;
 using FluentAssertions;
 
-namespace Andersoft.Guard.UnitTests.Validators.Strings;
+namespace Andersoft.Error.UnitTests.Validators.Strings;
 
 public class StringRegexTests
 {

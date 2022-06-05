@@ -1,8 +1,8 @@
-using Andersoft.Guard.Validators;
-using Andersoft.Guard.Validators.Strings;
+using Andersoft.Error.Validators;
+using Andersoft.Error.Validators.Strings;
 using FluentAssertions;
 
-namespace Andersoft.Guard.UnitTests.Validators.StringProperties;
+namespace Andersoft.Error.UnitTests.Validators.StringProperties;
 
 public class StringPropertiesEqualityTests
 {
@@ -23,6 +23,14 @@ public class StringPropertiesEqualityTests
     [Test]
     public void WhenCheckingIfPropertyWhiteSpace_GivenPropertyDoesIsNotWhiteSpace_ThenShouldNotError()
     {
+
+      string? name1 = null;
+      name1.ErrorIfNull()
+        .IfEmpty();
+      
+      string name2 = "hello";
+      name2.Error();
+
         // Arrange
         var person = new { Name = "Anderson" };
 

@@ -1,8 +1,8 @@
-using Andersoft.Guard.Validators;
-using Andersoft.Guard.Validators.Equalities;
+using Andersoft.Error.Validators;
+using Andersoft.Error.Validators.Equalities;
 using FluentAssertions;
 
-namespace Andersoft.Guard.UnitTests.Validators.Equalities;
+namespace Andersoft.Error.UnitTests.Validators.Equalities;
 
 
 public class EqualitiesTests

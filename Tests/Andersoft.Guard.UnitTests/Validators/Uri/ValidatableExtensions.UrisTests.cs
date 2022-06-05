@@ -1,8 +1,8 @@
-using Andersoft.Guard.Validators;
-using Andersoft.Guard.Validators.UriValidators;
+using Andersoft.Error.Validators;
+using Andersoft.Error.Validators.UriValidators;
 using FluentAssertions;
 
-namespace Andersoft.Guard.UnitTests.Validators.Uri;
+namespace Andersoft.Error.UnitTests.Validators.Uri;
 
 
 public class UrisTests

@@ -1,8 +1,8 @@
-using Andersoft.Guard.Validators;
-using Andersoft.Guard.Validators.EnumValidators;
+using Andersoft.Error.Validators;
+using Andersoft.Error.Validators.EnumValidators;
 using FluentAssertions;
 
-namespace Andersoft.Guard.UnitTests.Validators.Enum;
+namespace Andersoft.Error.UnitTests.Validators.Enum;
 
 
 public class EnumPropertiesTests

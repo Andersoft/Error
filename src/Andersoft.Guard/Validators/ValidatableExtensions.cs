@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using LanguageExt.Common;
 
-namespace Andersoft.Guard.Validators;
+namespace Andersoft.Error.Validators;
 
 public static class ValidatableExtensions
 {

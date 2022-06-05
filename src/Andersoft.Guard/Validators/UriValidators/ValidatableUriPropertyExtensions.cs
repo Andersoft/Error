@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using LanguageExt.Common;
 
-namespace Andersoft.Guard.Validators.UriValidators;
+namespace Andersoft.Error.Validators.UriValidators;
 
 public static class ValidatableUriPropertyExtensions
 {

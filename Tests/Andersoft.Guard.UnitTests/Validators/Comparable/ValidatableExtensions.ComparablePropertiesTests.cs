@@ -1,8 +1,8 @@
-using Andersoft.Guard.Validators;
-using Andersoft.Guard.Validators.Comparable;
+using Andersoft.Error.Validators;
+using Andersoft.Error.Validators.Comparable;
 using FluentAssertions;
 
-namespace Andersoft.Guard.UnitTests.Validators.Comparable;
+namespace Andersoft.Error.UnitTests.Validators.Comparable;
 
 
 public class ComparablePropertiesTests

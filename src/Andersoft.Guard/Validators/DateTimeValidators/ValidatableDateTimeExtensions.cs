@@ -1,6 +1,6 @@
 ﻿using LanguageExt.Common;
 
-namespace Andersoft.Guard.Validators.DateTimeValidators;
+namespace Andersoft.Error.Validators.DateTimeValidators;
 
 public static class ValidatableDateTimeExtensions
 {
