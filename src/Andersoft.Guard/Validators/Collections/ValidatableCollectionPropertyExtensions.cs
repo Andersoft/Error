@@ -8,7 +8,7 @@ public static class ValidatableCollectionPropertyExtensions
   public static Result<TValue> IfEmpty<TValue, TCollection>(
     this Validatable<TValue> validatable,
     Func<TValue, TCollection[]> func,
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull 
   {
     if (func(validatable.Value).Length == 0)
     {
@@ -20,7 +20,7 @@ public static class ValidatableCollectionPropertyExtensions
 
   public static Result<TValue> IfNotEmpty<TValue, TCollection>(this Validatable<TValue> validatable,
     Func<TValue, TCollection[]> func,
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     if (func(validatable.Value).Length != 0)
     {
@@ -31,7 +31,7 @@ public static class ValidatableCollectionPropertyExtensions
   }
   public static Result<TValue> IfCountEquals<TValue, TCollection>(this Validatable<TValue> validatable, Func<TValue, TCollection[]> func,
     int count,
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     if (func(validatable.Value).Length == count)
     {
@@ -43,7 +43,7 @@ public static class ValidatableCollectionPropertyExtensions
 
   public static Result<TValue> IfCountNotEquals<TValue, TCollection>(this Validatable<TValue> validatable, Func<TValue, TCollection[]> func,
     int count,
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     if (func(validatable.Value).Length != count)
     {
@@ -55,7 +55,7 @@ public static class ValidatableCollectionPropertyExtensions
 
   public static Result<TValue> IfCountGreaterThan<TValue, TCollection>(this Validatable<TValue> validatable, Func<TValue, TCollection[]> func,
     int count,
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     if (func(validatable.Value).Length > count)
     {
@@ -66,7 +66,7 @@ public static class ValidatableCollectionPropertyExtensions
   }
   public static Result<TValue> IfCountLessThan<TValue, TCollection>(this Validatable<TValue> validatable, Func<TValue, TCollection[]> func,
     int count,
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     if (func(validatable.Value).Length < count)
     {
@@ -77,7 +77,7 @@ public static class ValidatableCollectionPropertyExtensions
   }
   public static Result<TValue> IfHasNullElements<TValue, TCollection>(this Validatable<TValue> validatable,
     Func<TValue, TCollection[]> func,
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     if (func(validatable.Value).Any(x => x == null))
     {
@@ -88,7 +88,7 @@ public static class ValidatableCollectionPropertyExtensions
   }
   public static Result<TValue> IfContains<TValue, TCollection>(this Validatable<TValue> validatable, Func<TValue, TCollection[]> func,
     TCollection needle,
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     if (func(validatable.Value).Contains(needle))
     {
@@ -100,7 +100,7 @@ public static class ValidatableCollectionPropertyExtensions
 
   public static Result<TValue> IfNotContains<TValue, TCollection>(this Validatable<TValue> validatable, Func<TValue, TCollection[]> func,
     TCollection needle,
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     if (!func(validatable.Value).Contains(needle))
     {

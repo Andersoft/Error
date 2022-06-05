@@ -8,7 +8,7 @@ public static class ValidatableEnumPropertyExtensions
   public static Result<TValue> IfOutOfRange<TValue, TProperty>(
     this Validatable<TValue> validatable,
     Func<TValue, TProperty> func,
-    [CallerArgumentExpression("func")]string? funcName = null)
+    [CallerArgumentExpression("func")]string? funcName = null) where TValue : notnull
     where TProperty : struct, Enum
   {
     if (!Enum.IsDefined(func(validatable.Value)))

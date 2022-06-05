@@ -6,7 +6,7 @@ namespace Andersoft.Guard.Validators.Comparable;
 public static class ValidatableComparableExtensions
 {
 
-  public static Result<TValue> IfGreaterThan<TValue>(this Validatable<TValue> validatable, TValue other)
+  public static Result<TValue> IfGreaterThan<TValue>(this Validatable<TValue> validatable, TValue other) where TValue : notnull
   {
     if (Comparer<TValue>.Default.Compare(validatable.Value, other) > 0)
     {
@@ -19,7 +19,7 @@ public static class ValidatableComparableExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfLessThan<TValue>(this Validatable<TValue> validatable, TValue other)
+  public static Result<TValue> IfLessThan<TValue>(this Validatable<TValue> validatable, TValue other) where TValue : notnull
   {
     if (Comparer<TValue>.Default.Compare(validatable.Value, other) < 0)
     {
@@ -32,12 +32,12 @@ public static class ValidatableComparableExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfPositive<TValue>(this Validatable<TValue> validatable)
+  public static Result<TValue> IfPositive<TValue>(this Validatable<TValue> validatable) where TValue : notnull
   {
     return IfGreaterThan(validatable, default!);
   }
 
-  public static Result<TValue> IfNegative<TValue>(this Validatable<TValue> validatable)
+  public static Result<TValue> IfNegative<TValue>(this Validatable<TValue> validatable) where TValue : notnull
   {
     return IfLessThan(validatable, default!);
   }
@@ -45,7 +45,7 @@ public static class ValidatableComparableExtensions
   public static Result<TValue> IfOutOfRange<TValue>(
     this Validatable<TValue> validatable,
     TValue min,
-    TValue max)
+    TValue max) where TValue : notnull
   {
     if (Comparer<TValue>.Default.Compare(validatable.Value, min) < 0 || Comparer<TValue>.Default.Compare(validatable.Value, max) > 0)
     {

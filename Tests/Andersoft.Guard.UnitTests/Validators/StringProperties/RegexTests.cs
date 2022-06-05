@@ -37,7 +37,7 @@ public class StringPropertiesRegexTests
 
         // Act
         var result = person.Error().IfMatches(p => p.Name, regexPattern, regexOptions)
-          .Match(success => success, error => null);
+          .Match(success => success, error => null!);
 
         // Assert
         result.Should().Be(person);
@@ -73,7 +73,7 @@ public class StringPropertiesRegexTests
 
         // Act
         var result = person.Error().IfMatches(p => p.Name, regex)
-          .Match(success => success, error => null);
+          .Match(success => success, error => null!);
 
         // Assert
         result.Should().Be(person);
@@ -107,7 +107,7 @@ public class StringPropertiesRegexTests
 
         // Act
         var result = person.Error().IfNotMatches(p => p.Name, regexPattern, regexOptions)
-          .Match(success => success, error => null);
+          .Match(success => success, error => null!);
 
         // Assert
         result.Should().Be(person);
@@ -143,7 +143,7 @@ public class StringPropertiesRegexTests
 
         // Act
         var result = person.Error().IfNotMatches(p => p.Name, regex)
-          .Match(success => success, error => null);
+          .Match(success => success, error => null!);
 
         // Assert
         result.Should().Be(person);

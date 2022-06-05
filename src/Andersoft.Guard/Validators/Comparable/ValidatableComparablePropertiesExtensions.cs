@@ -10,7 +10,7 @@ public static class ValidatableComparablePropertiesExtensions
     this Validatable<TValue> validatable, 
     Func<TValue, TProperty> func, 
     TProperty other, 
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     if (Comparer<TProperty>.Default.Compare(func(validatable.Value), other) > 0)
     {
@@ -27,7 +27,7 @@ public static class ValidatableComparablePropertiesExtensions
     this Validatable<TValue> validatable, 
     Func<TValue, TProperty> func, 
     TProperty other, 
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     if (Comparer<TProperty>.Default.Compare(func(validatable.Value), other) < 0)
     {
@@ -43,7 +43,7 @@ public static class ValidatableComparablePropertiesExtensions
   public static Result<TValue> IfPositive<TValue, TProperty>(
     this Validatable<TValue> validatable, 
     Func<TValue, TProperty> func, 
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     return IfGreaterThan(validatable, func, default!, funcProperty);
   }
@@ -51,7 +51,7 @@ public static class ValidatableComparablePropertiesExtensions
   public static Result<TValue> IfNegative<TValue, TProperty>(
     this Validatable<TValue> validatable, 
     Func<TValue, TProperty> func, 
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     return IfLessThan(validatable, func, default!, funcProperty);
   }
@@ -61,7 +61,7 @@ public static class ValidatableComparablePropertiesExtensions
     Func<TValue, TProperty> func,
     TProperty min,
     TProperty max,
-    [CallerArgumentExpression("func")] string? funcProperty = null)
+    [CallerArgumentExpression("func")] string? funcProperty = null) where TValue : notnull
   {
     if (Comparer<TProperty>.Default.Compare(func(validatable.Value), min) < 0 || Comparer<TProperty>.Default.Compare(func(validatable.Value), max) > 0)
     {

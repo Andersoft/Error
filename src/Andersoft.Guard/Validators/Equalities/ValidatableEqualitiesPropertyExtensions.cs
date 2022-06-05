@@ -9,7 +9,7 @@ public static class ValidatableEqualitiesPropertyExtensions
     this Validatable<TValue> validatable,
     Func<TValue, TOther> func,
     TOther other,
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
     {
@@ -23,7 +23,7 @@ public static class ValidatableEqualitiesPropertyExtensions
     this Validatable<TValue> validatable,
     Func<TValue, TOther> func, 
     TOther other,
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (!EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
     {
@@ -38,7 +38,7 @@ public static class ValidatableEqualitiesPropertyExtensions
     Func<TValue, TOther> func,
     TOther other,
     string errorMessage,
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
     {
@@ -53,7 +53,7 @@ public static class ValidatableEqualitiesPropertyExtensions
     Func<TValue, TOther> func,
     TOther other,
     string errorMessage,
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (!EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
     {
@@ -66,7 +66,7 @@ public static class ValidatableEqualitiesPropertyExtensions
   public static Result<TValue> IfDefault<TValue, TOther>(
     this Validatable<TValue> validatable,
     Func<TValue, TOther> func,
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     return IfEquals(validatable, func, default!, "Value should not be default.", funcName);
   }
@@ -74,7 +74,7 @@ public static class ValidatableEqualitiesPropertyExtensions
   public static Result<TValue> IfNotDefault<TValue, TOther>(
     this Validatable<TValue> validatable,
     Func<TValue, TOther> func,
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     return IfNotEquals(validatable, func, default!, "Value should be default.", funcName);
   }
@@ -82,7 +82,7 @@ public static class ValidatableEqualitiesPropertyExtensions
   public static Result<TValue> IfNull<TValue, TOther>(
     this Validatable<TValue> validatable,
     Func<TValue, TOther> func,
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (func(validatable.Value) is null)
     {
@@ -95,7 +95,7 @@ public static class ValidatableEqualitiesPropertyExtensions
   public static Result<TValue> IfNotNull<TValue, TOther>(
     this Validatable<TValue> validatable,
     Func<TValue, TOther> func,
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (func(validatable.Value) is not null)
     {

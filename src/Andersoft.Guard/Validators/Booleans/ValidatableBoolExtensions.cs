@@ -11,50 +11,51 @@ namespace Andersoft.Guard.Validators.Booleans
 {
   public static class ValidatableBoolExtensions
   {
-      public static Result<bool> IfTrue(this Validatable<bool> validatable)
+    public static Result<bool> IfTrue(this Validatable<bool> validatable)
+    {
+      if (validatable.Value)
       {
-        if (validatable.Value)
-        {
-          return new Result<bool>(new ArgumentException("Value should be false.", validatable.ParamName));
-        }
-
-        return validatable.Value;
-      }
-      public static Result<bool> IfFalse(this Validatable<bool> validatable)
-      {
-        if (!validatable.Value)
-        {
-          return new Result<bool>(new ArgumentException("Value should be true.", validatable.ParamName));
-        }
-
-        return validatable.Value;
+        return new Result<bool>(new ArgumentException("Value should be false.", validatable.ParamName));
       }
 
-      public static Result<bool> IfFalse<TValue>(
-        this Validatable<TValue> validatable, 
-        Func<TValue, bool> func,
-        [CallerArgumentExpression("func")] string? funcName = null)
-      {
-        if (!func(validatable.Value))
-        {
-          return new Result<bool>(new ArgumentException($"Value should meet condition (condition: '{funcName}').", validatable.ParamName));
-        }
+      return validatable.Value;
+    }
 
-        return func(validatable.Value);
+    public static Result<bool> IfFalse(this Validatable<bool> validatable)
+    {
+      if (!validatable.Value)
+      {
+        return new Result<bool>(new ArgumentException("Value should be true.", validatable.ParamName));
       }
 
-      public static Result<bool> IfTrue<TValue>(
-        this Validatable<TValue> validatable,
-        Func<TValue, bool> func,
-        [CallerArgumentExpression("func")] string? funcName = null)
-      {
-        if (func(validatable.Value))
-        {
-          return new Result<bool>(new ArgumentException($"Value should not meet condition (condition: '{funcName}').", validatable.ParamName));
-        }
+      return validatable.Value;
+    }
 
-        return func(validatable.Value);
+    public static Result<bool> IfFalse<TValue>(
+      this Validatable<TValue> validatable,
+      Func<TValue, bool> func,
+      [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
+    {
+      if (!func(validatable.Value))
+      {
+        return new Result<bool>(new ArgumentException($"Value should meet condition (condition: '{funcName}').", validatable.ParamName));
       }
+
+      return func(validatable.Value);
+    }
+
+    public static Result<bool> IfTrue<TValue>(
+      this Validatable<TValue> validatable,
+      Func<TValue, bool> func,
+      [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
+    {
+      if (func(validatable.Value))
+      {
+        return new Result<bool>(new ArgumentException($"Value should not meet condition (condition: '{funcName}').", validatable.ParamName));
+      }
+
+      return func(validatable.Value);
+    }
 
   }
 }

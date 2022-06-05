@@ -9,7 +9,7 @@ public static class ValidatableDateTimePropertyExtensions
     this Validatable<TValue> validatable, 
     Func<TValue, DateTime> func, 
     DateTimeKind kind, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (func(validatable.Value).Kind == kind)
     {
@@ -23,7 +23,7 @@ public static class ValidatableDateTimePropertyExtensions
     this Validatable<TValue> validatable,
     Func<TValue, DateTime> func,
     DateTimeKind kind,
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (func(validatable.Value).Kind != kind)
     {
@@ -36,14 +36,14 @@ public static class ValidatableDateTimePropertyExtensions
   public static Result<TValue> IfUtc<TValue>(
     this Validatable<TValue> validatable, 
     Func<TValue, DateTime> func,
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     return IfDateTimeKind(validatable, func, DateTimeKind.Utc, funcName);
   }
 
   public static Result<TValue> IfNotUtc<TValue>(this Validatable<TValue> validatable,
     Func<TValue, DateTime> func,
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     return IfDateTimeNotKind(validatable, func, DateTimeKind.Utc, funcName);
   }

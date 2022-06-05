@@ -10,7 +10,7 @@ public static class ValidatableStringPropertyExtensions
   public static Result<TValue> IfNullOrEmpty<TValue>(
     this Validatable<TValue> validatable,
     Func<TValue, string> propertyFunc, 
-    [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+    [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (string.IsNullOrEmpty(propertyFunc(validatable.Value)))
     {
@@ -22,7 +22,7 @@ public static class ValidatableStringPropertyExtensions
 
   public static Result<TValue> IfNullOrWhiteSpace<TValue>(
     this Validatable<TValue> validatable,
-    Func<TValue, string> propertyFunc, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+    Func<TValue, string> propertyFunc, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (string.IsNullOrWhiteSpace(propertyFunc(validatable.Value)))
     {
@@ -36,7 +36,7 @@ public static class ValidatableStringPropertyExtensions
     this Validatable<TValue> validatable,
     Func<TValue, string> propertyFunc,
     string otherString,
-    StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+    StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (propertyFunc(validatable.Value).EndsWith(otherString, comparisonType))
     {
@@ -51,7 +51,7 @@ public static class ValidatableStringPropertyExtensions
     Func<TValue, string> propertyFunc,
     string otherString,
     StringComparison comparisonType = StringComparison.Ordinal,
-    [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+    [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (!propertyFunc(validatable.Value).EndsWith(otherString, comparisonType))
     {
@@ -65,7 +65,7 @@ public static class ValidatableStringPropertyExtensions
     this Validatable<TValue> validatable,
     Func<TValue, string> propertyFunc, 
     int length,
-    [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+    [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (propertyFunc(validatable.Value).Length > length)
     {
@@ -75,7 +75,7 @@ public static class ValidatableStringPropertyExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfShorterThan<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, int length, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfShorterThan<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, int length, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (propertyFunc(validatable.Value).Length < length)
     {
@@ -84,7 +84,7 @@ public static class ValidatableStringPropertyExtensions
 
     return validatable.Value;
   }
-  public static Result<TValue> IfLengthEquals<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, int length, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfLengthEquals<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, int length, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (propertyFunc(validatable.Value).Length == length)
     {
@@ -93,7 +93,7 @@ public static class ValidatableStringPropertyExtensions
 
     return validatable.Value;
   }
-  public static Result<TValue> IfLengthNotEquals<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, int length, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfLengthNotEquals<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, int length, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (propertyFunc(validatable.Value).Length != length)
     {
@@ -103,7 +103,7 @@ public static class ValidatableStringPropertyExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfWhiteSpace<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfWhiteSpace<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (propertyFunc(validatable.Value).All(char.IsWhiteSpace))
     {
@@ -113,7 +113,7 @@ public static class ValidatableStringPropertyExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfEmpty<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfEmpty<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (propertyFunc(validatable.Value).Length == 0)
     {
@@ -122,17 +122,17 @@ public static class ValidatableStringPropertyExtensions
 
     return validatable.Value;
   }
-  public static Result<TValue> IfEqualsIgnoreCase<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfEqualsIgnoreCase<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     return IfEquals(validatable, propertyFunc, otherString, StringComparison.OrdinalIgnoreCase, funcName);
   }
 
-  public static Result<TValue> IfNotEqualsIgnoreCase<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfNotEqualsIgnoreCase<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     return IfNotEquals(validatable, propertyFunc, otherString, StringComparison.OrdinalIgnoreCase, funcName);
   }
 
-  public static Result<TValue> IfEquals<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfEquals<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (string.Equals(propertyFunc(validatable.Value), otherString, comparisonType))
     {
@@ -142,7 +142,7 @@ public static class ValidatableStringPropertyExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfNotEquals<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfNotEquals<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (!string.Equals(propertyFunc(validatable.Value), otherString, comparisonType))
     {
@@ -152,7 +152,7 @@ public static class ValidatableStringPropertyExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfStartsWith<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfStartsWith<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (propertyFunc(validatable.Value).StartsWith(otherString, comparisonType))
     {
@@ -162,7 +162,7 @@ public static class ValidatableStringPropertyExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfNotStartsWith<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfNotStartsWith<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (!propertyFunc(validatable.Value).StartsWith(otherString, comparisonType))
     {
@@ -171,7 +171,7 @@ public static class ValidatableStringPropertyExtensions
 
     return validatable.Value;
   }
-  public static Result<TValue> IfContains<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfContains<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (propertyFunc(validatable.Value).Contains(otherString, comparisonType))
     {
@@ -180,7 +180,7 @@ public static class ValidatableStringPropertyExtensions
 
     return validatable.Value;
   }
-  public static Result<TValue> IfNotContains<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfNotContains<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string otherString, StringComparison comparisonType = StringComparison.Ordinal, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (!propertyFunc(validatable.Value).Contains(otherString, comparisonType))
     {
@@ -190,7 +190,7 @@ public static class ValidatableStringPropertyExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfMatches<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, Regex regex, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfMatches<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, Regex regex, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (regex.IsMatch(propertyFunc(validatable.Value)))
     {
@@ -200,7 +200,7 @@ public static class ValidatableStringPropertyExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfNotMatches<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, Regex regex, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfNotMatches<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, Regex regex, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     if (!regex.IsMatch(propertyFunc(validatable.Value)))
     {
@@ -210,7 +210,7 @@ public static class ValidatableStringPropertyExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfMatches<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string regexPattern, RegexOptions regexOptions, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfMatches<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string regexPattern, RegexOptions regexOptions, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     var regex = new Regex(regexPattern, regexOptions);
 
@@ -222,7 +222,7 @@ public static class ValidatableStringPropertyExtensions
     return validatable.Value;
   }
 
-  public static Result<TValue> IfNotMatches<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string regexPattern, RegexOptions regexOptions, [CallerArgumentExpression("propertyFunc")] string? funcName = null)
+  public static Result<TValue> IfNotMatches<TValue>(this Validatable<TValue> validatable, Func<TValue, string> propertyFunc, string regexPattern, RegexOptions regexOptions, [CallerArgumentExpression("propertyFunc")] string? funcName = null) where TValue : notnull
   {
     var regex = new Regex(regexPattern, regexOptions);
 

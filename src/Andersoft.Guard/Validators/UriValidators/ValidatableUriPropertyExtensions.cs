@@ -9,7 +9,7 @@ public static class ValidatableUriPropertyExtensions
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func,
     string scheme,
-    [CallerArgumentExpression("func")]string? funcName = null)
+    [CallerArgumentExpression("func")]string? funcName = null) where TValue : notnull
   {
     if (func(validatable.Value).Scheme == scheme)
     {
@@ -23,7 +23,7 @@ public static class ValidatableUriPropertyExtensions
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func, 
     string scheme, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (func(validatable.Value).Scheme != scheme)
     {
@@ -36,7 +36,7 @@ public static class ValidatableUriPropertyExtensions
   public static Result<TValue> IfAbsolute<TValue>(
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (func(validatable.Value).IsAbsoluteUri)
     {
@@ -49,7 +49,7 @@ public static class ValidatableUriPropertyExtensions
   public static Result<TValue> IfNotAbsolute<TValue>(
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     return IfRelative(validatable, func, funcName);
   }
@@ -57,7 +57,7 @@ public static class ValidatableUriPropertyExtensions
   public static Result<TValue> IfRelative<TValue>(
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (!func(validatable.Value).IsAbsoluteUri)
     {
@@ -70,7 +70,7 @@ public static class ValidatableUriPropertyExtensions
   public static Result<TValue> IfNotRelative<TValue>(
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     return IfAbsolute(validatable, func, funcName);
   }
@@ -78,7 +78,7 @@ public static class ValidatableUriPropertyExtensions
   public static Result<TValue> IfHttp<TValue>(
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     return IfScheme(validatable, func, Uri.UriSchemeHttp, funcName);
   }
@@ -86,7 +86,7 @@ public static class ValidatableUriPropertyExtensions
   public static Result<TValue> IfNotHttp<TValue>(
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     return IfNotScheme(validatable,func, Uri.UriSchemeHttp, funcName);
   }
@@ -94,7 +94,7 @@ public static class ValidatableUriPropertyExtensions
   public static Result<TValue> IfHttps<TValue>(
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     return IfScheme(validatable, func, Uri.UriSchemeHttps, funcName);
   }
@@ -102,7 +102,7 @@ public static class ValidatableUriPropertyExtensions
   public static Result<TValue> IfNotHttps<TValue>(
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     return IfNotScheme(validatable, func, Uri.UriSchemeHttps, funcName);
   }
@@ -110,7 +110,7 @@ public static class ValidatableUriPropertyExtensions
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func, 
     int port, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (func(validatable.Value).Port == port)
     {
@@ -124,7 +124,7 @@ public static class ValidatableUriPropertyExtensions
     this Validatable<TValue> validatable,
     Func<TValue, Uri> func, 
     int port, 
-    [CallerArgumentExpression("func")] string? funcName = null)
+    [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
     if (func(validatable.Value).Port != port)
     {
