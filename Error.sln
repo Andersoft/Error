@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A7D9F34C-CC8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{55A6B8B2-CAD2-4CA4-AB61-63E682445252}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Andersoft.Error", "src\Andersoft.Guard\Andersoft.Error.csproj", "{822EFDC4-25C2-47CB-9436-04A0AECC438D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Andersoft.Error", "src\Andersoft.Error\Andersoft.Error.csproj", "{822EFDC4-25C2-47CB-9436-04A0AECC438D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Andersoft.Error.UnitTests", "Tests\Andersoft.Guard.UnitTests\Andersoft.Error.UnitTests.csproj", "{AD0E6A5F-4EA5-42F4-983E-7D4036E713EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Andersoft.Error.UnitTests", "Tests\Andersoft.Error.UnitTests\Andersoft.Error.UnitTests.csproj", "{AD0E6A5F-4EA5-42F4-983E-7D4036E713EC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A1F770C-BEAF-4C63-80AA-11A43062F66D}"
 	ProjectSection(SolutionItems) = preProject

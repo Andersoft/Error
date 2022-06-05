@@ -6,6 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>Error</PackageId>
+    <Version>$(Version)</Version>
+    <Authors>Jordan Anderson</Authors>
+    <PackageTags>argument,guard,clause,exception,contract,assert,assertions,validation</PackageTags>
+    <Description>A simple, fluent, extensible, and fully customizable library for returning or throwinfg exceptions using .NET 6+</Description>
+    <PackageProjectUrl>https://github.com/Andersoft/Error</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <licenses>https://opensource.org/licenses/MIT</licenses>
+    <RepositoryUrl>https://github.com/Andersoft/Error</RepositoryUrl>
+    <PackageOutputPath>../artifacts/</PackageOutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="stylecop.json" />
   </ItemGroup>
