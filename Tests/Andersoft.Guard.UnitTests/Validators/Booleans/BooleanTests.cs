@@ -7,6 +7,7 @@ using Andersoft.Guard.Validators;
 using Andersoft.Guard.Validators.Booleans;
 using FluentAssertions;
 using LanguageExt;
+using LanguageExt.Common;
 
 namespace Andersoft.Guard.UnitTests.Validators.Booleans
 {
@@ -34,10 +35,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
 
       // Act
       var result = value.Error().IfTrue()
-        .Match(success => success, error => default(bool?));
+        .Match(success => success.Value, error => default(bool?));
 
       // Assert
-      result.Should().HaveValue().And.BeFalse();
+      result.Should().Be(value);
     }
 
     [Test]
@@ -48,10 +49,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
 
       // Act
       var result = value.Error().IfFalse()
-        .Match(success => success, error => default(bool?));
+        .Match(success => success.Value, error => default(bool?));
 
       // Assert
-      result.Should().HaveValue().And.BeTrue();
+      result.Should().Be(value);
     }
 
     [Test]
@@ -90,10 +91,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
 
       // Act
       var result = value.Error().IfTrue(x => x.Length == 0)
-        .Match(success => success, error => default(bool?));
+        .Match(success => success.Value, error => default!);
 
       // Assert
-      result.Should().HaveValue().And.BeFalse();
+      result.Should().Be(value);
     }
 
     [Test]
@@ -104,10 +105,10 @@ namespace Andersoft.Guard.UnitTests.Validators.Booleans
 
       // Act
       var result = value.Error().IfFalse(x => x.Length > 0)
-        .Match(success => success, error => default(bool?));
+        .Match(success => success.Value, error => default!);
 
       // Assert
-      result.Should().HaveValue().And.BeTrue();
+      result.Should().Be(value);
     }
 
     [Test]

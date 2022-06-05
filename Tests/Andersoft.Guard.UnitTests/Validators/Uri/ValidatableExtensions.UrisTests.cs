@@ -28,7 +28,7 @@ public class UrisTests
         var uri = new System.Uri("https://www.google.com");
 
         // Act
-       var result = uri.Error().IfHttp();
+       var result = uri.Error().IfHttp().Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);
@@ -55,7 +55,7 @@ public class UrisTests
         var uri = new System.Uri("http://www.google.com");
 
         // Act
-       var result = uri.Error().IfNotHttp();
+       var result = uri.Error().IfNotHttp().Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);
@@ -82,7 +82,7 @@ public class UrisTests
         var uri = new System.Uri("http://www.google.com");
 
         // Act
-       var result = uri.Error().IfHttps();
+       var result = uri.Error().IfHttps().Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);
@@ -109,7 +109,7 @@ public class UrisTests
         var uri = new System.Uri("https://www.google.com");
 
         // Act
-       var result = uri.Error().IfNotHttps();
+       var result = uri.Error().IfNotHttps().Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);
@@ -136,7 +136,7 @@ public class UrisTests
         var uri = new System.Uri($"{System.Uri.UriSchemeHttp}://www.google.com");
 
         // Act
-       var result = uri.Error().IfScheme(System.Uri.UriSchemeFtp);
+       var result = uri.Error().IfScheme(System.Uri.UriSchemeFtp).Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);
@@ -163,7 +163,7 @@ public class UrisTests
         var uri = new System.Uri($"{System.Uri.UriSchemeFtp}://www.google.com");
 
         // Act
-       var result = uri.Error().IfNotScheme(System.Uri.UriSchemeFtp);
+       var result = uri.Error().IfNotScheme(System.Uri.UriSchemeFtp).Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);
@@ -190,7 +190,7 @@ public class UrisTests
         var uri = new System.Uri("/path/to/file", UriKind.Relative);
 
         // Act
-       var result = uri.Error().IfAbsolute();
+       var result = uri.Error().IfAbsolute().Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);
@@ -217,7 +217,7 @@ public class UrisTests
         var uri = new System.Uri("http://www.google.com");
 
         // Act
-       var result = uri.Error().IfRelative();
+       var result = uri.Error().IfRelative().Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);
@@ -244,7 +244,7 @@ public class UrisTests
         var uri = new System.Uri("http://www.google.com");
 
         // Act
-       var result = uri.Error().IfNotAbsolute();
+       var result = uri.Error().IfNotAbsolute().Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);
@@ -271,7 +271,7 @@ public class UrisTests
         var uri = new System.Uri("/path/to/file", UriKind.Relative);
 
         // Act
-       var result = uri.Error().IfNotRelative();
+       var result = uri.Error().IfNotRelative().Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);
@@ -298,7 +298,7 @@ public class UrisTests
         var uri = new System.Uri("http://www.google.com:8080");
 
         // Act
-       var result = uri.Error().IfPort(80);
+       var result = uri.Error().IfPort(80).Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);
@@ -325,7 +325,7 @@ public class UrisTests
         var uri = new System.Uri("http://www.google.com:80");
 
         // Act
-       var result = uri.Error().IfNotPort(80);
+       var result = uri.Error().IfNotPort(80).Match(success => success.Value, error => default!);
 
         // Assert
         result.Should().Be(uri);

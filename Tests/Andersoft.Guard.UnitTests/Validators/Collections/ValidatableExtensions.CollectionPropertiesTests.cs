@@ -28,7 +28,7 @@ public class CollectionPropertiesTests
         var person = new { Friends = new[] { "Amichai's mom" } };
 
         // Act
-       var result = person.Error().IfEmpty(p => p.Friends);
+       var result = person.Error().IfEmpty(p => p.Friends).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -55,7 +55,7 @@ public class CollectionPropertiesTests
         var person = new { Friends = Array.Empty<string>() };
 
         // Act
-       var result = person.Error().IfNotEmpty(p => p.Friends);
+       var result = person.Error().IfNotEmpty(p => p.Friends).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -82,7 +82,7 @@ public class CollectionPropertiesTests
         var person = new { Friends = new[] { "Amichai's mom" } };
 
         // Act
-       var result = person.Error().IfCountEquals(p => p.Friends, 2);
+       var result = person.Error().IfCountEquals(p => p.Friends, 2).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -109,7 +109,7 @@ public class CollectionPropertiesTests
         var person = new { Friends = new[] { "Amichai's mom" } };
 
         // Act
-       var result = person.Error().IfCountNotEquals(p => p.Friends, 1);
+       var result = person.Error().IfCountNotEquals(p => p.Friends, 1).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -136,7 +136,7 @@ public class CollectionPropertiesTests
         var person = new { Friends = new[] { "Amichai's mom" } };
 
         // Act
-       var result = person.Error().IfCountGreaterThan(p => p.Friends, 2);
+       var result = person.Error().IfCountGreaterThan(p => p.Friends, 2).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -149,7 +149,7 @@ public class CollectionPropertiesTests
         var person = new { Friends = new[] { "Amichai's mom" } };
 
         // Act
-       var result = person.Error().IfCountGreaterThan(p => p.Friends, 1);
+       var result = person.Error().IfCountGreaterThan(p => p.Friends, 1).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -176,7 +176,7 @@ public class CollectionPropertiesTests
         var person = new { Friends = new[] { "Amichai's mom" } };
 
         // Act
-       var result = person.Error().IfCountLessThan(p => p.Friends, 0);
+       var result = person.Error().IfCountLessThan(p => p.Friends, 0).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -189,7 +189,7 @@ public class CollectionPropertiesTests
         var person = new { Friends = new[] { "Amichai's mom" } };
 
         // Act
-       var result = person.Error().IfCountLessThan(p => p.Friends, 1);
+       var result = person.Error().IfCountLessThan(p => p.Friends, 1).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -216,7 +216,7 @@ public class CollectionPropertiesTests
         var person = new { Friends = new[] { "Amichai's mom" } };
 
         // Act
-       var result = person.Error().IfHasNullElements(p => p.Friends);
+       var result = person.Error().IfHasNullElements(p => p.Friends).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -243,7 +243,7 @@ public class CollectionPropertiesTests
         var person = new { Friends = new[] { null, "Amichai's mom" } };
 
         // Act
-       var result = person.Error().IfContains(p => p.Friends, "Amichai's dad");
+       var result = person.Error().IfContains(p => p.Friends, "Amichai's dad").Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -270,7 +270,7 @@ public class CollectionPropertiesTests
         var person = new { Friends = new[] { null, "Amichai's mom" } };
 
         // Act
-       var result = person.Error().IfNotContains(p => p.Friends, "Amichai's mom");
+       var result = person.Error().IfNotContains(p => p.Friends, "Amichai's mom").Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);

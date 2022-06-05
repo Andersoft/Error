@@ -28,7 +28,7 @@ public class EnumPropertiesTests
         var person = new { PersonType = PersonType.NotFunny };
 
         // Act
-       var result = person.Error().IfOutOfRange(p => p.PersonType);
+       var result = person.Error().IfOutOfRange(p => p.PersonType).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);

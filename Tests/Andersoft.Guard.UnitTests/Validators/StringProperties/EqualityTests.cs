@@ -29,7 +29,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfWhiteSpace(p => p.Name)
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person);
@@ -71,7 +71,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNullOrEmpty(p => p.Name)
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person); ;
@@ -85,7 +85,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNullOrEmpty(p => p.Name)
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person); ;
@@ -141,7 +141,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNullOrWhiteSpace(p => p.Name)
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person); 
@@ -169,7 +169,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfEmpty(p => p.Name)
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person);
@@ -197,7 +197,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfEquals(p => p.Name, "Amichai2")
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person); 
@@ -231,7 +231,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfEquals(p => p.Name, otherValue, comparisonType)
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person);
@@ -259,7 +259,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNotEquals(p => p.Name, "Anderson")
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person);
@@ -276,7 +276,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNotEquals(p => p.Name, otherValue, comparisonType)
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person); 
@@ -335,7 +335,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfEqualsIgnoreCase(p => p.Name, "Jordan")
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person);
@@ -363,7 +363,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNotEqualsIgnoreCase(p => p.Name, "Anderson")
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person);
@@ -377,7 +377,7 @@ public class StringPropertiesEqualityTests
 
         // Act
         var result = person.Error().IfNotEqualsIgnoreCase(p => p.Name, "ANDERSON")
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().Be(person);

@@ -30,7 +30,7 @@ public class StringRegexTests
   {
     // Act
     var result = value.Error().IfMatches(regexPattern, regexOptions)
-      .Match(success => success, error => default(string?));
+      .Match(success => success.Value, error => default!);
 
     // Assert
     result.Should().Be(value); ;
@@ -64,7 +64,7 @@ public class StringRegexTests
 
     // Act
     var result = value.Error().IfMatches(regex)
-      .Match(success => success, error => default(string?));
+      .Match(success => success.Value, error => default!);
 
     // Assert
     result.Should().Be(value); ;
@@ -92,7 +92,7 @@ public class StringRegexTests
   {
     // Act
     var result = value.Error().IfNotMatches(regexPattern, regexOptions)
-      .Match(success => success, error => default(string?));
+      .Match(success => success.Value, error => default!);
 
     // Assert
     result.Should().Be(value); ;
@@ -126,7 +126,7 @@ public class StringRegexTests
 
     // Act
     var result = value.Error().IfNotMatches(regex)
-      .Match(success => success, error => default(string?));
+      .Match(success => success.Value, error => default!);
 
     // Assert
     result.Should().Be(value);

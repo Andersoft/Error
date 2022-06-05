@@ -4,90 +4,142 @@ namespace Andersoft.Guard.Validators.Collections
 {
   public static class ValidatableCollectionExtensions
   {
-    public static Result<TValue[]> IfEmpty<TValue>(this Validatable<TValue[]> validatable)
+    public static Result<Validatable<TValue[]>> IfEmpty<TValue>(this Result<Validatable<TValue[]>> result)
     {
-      if (validatable.Value.Length == 0)
-      {
-        return new Result<TValue[]>(new ArgumentException("Collection should not be empty.", validatable.ParamName));
-      }
+      return result.Match(Validate, error => new(error));
 
-      return validatable.Value;
+      Result<Validatable<TValue[]>> Validate(Validatable<TValue[]> validatable)
+      {
+        if (validatable.Value.Length == 0)
+        {
+          return new Result<Validatable<TValue[]>>(new ArgumentException("Collection should not be empty.", validatable.ParamName));
+        }
+
+        return validatable;
+      }
     }
 
-    public static Result<TValue[]> IfNotEmpty<TValue>(this Validatable<TValue[]> validatable)
+    public static Result<Validatable<TValue[]>> IfNotEmpty<TValue>(this Result<Validatable<TValue[]>> result)
     {
-      if (validatable.Value.Length != 0)
-      {
-        return new Result<TValue[]>(new ArgumentException("Collection should be empty.", validatable.ParamName));
-      }
+      return result.Match(Validate, error => new(error));
 
-      return validatable.Value;
+      Result<Validatable<TValue[]>> Validate(Validatable<TValue[]> validatable)
+      {
+        if (validatable.Value.Length != 0)
+        {
+          return new Result<Validatable<TValue[]>>(new ArgumentException("Collection should be empty.", validatable.ParamName));
+        }
+
+        return validatable;
+      }
     }
-    public static Result<TValue[]> IfCountEquals<TValue>(this Validatable<TValue[]> validatable, int count)
+    public static Result<Validatable<TValue[]>> IfCountEquals<TValue>(this Result<Validatable<TValue[]>> result, int count)
     {
-      if (validatable.Value.Length == count)
+      return result.Match(Validate, error => new(error));
+
+      Result<Validatable<TValue[]>> Validate(Validatable<TValue[]> validatable)
       {
-        return new Result<TValue[]>(new ArgumentException($"Collection count should not be equal to {count}.", validatable.ParamName));
+        if (validatable.Value.Length == count)
+        {
+          return new Result<Validatable<TValue[]>>(new ArgumentException($"Collection count should not be equal to {count}.",
+            validatable.ParamName));
+        }
+
+        return validatable;
       }
-
-      return validatable.Value;
-    }
-
-    public static Result<TValue[]> IfCountNotEquals<TValue>(this Validatable<TValue[]> validatable, int count)
-    {
-      if (validatable.Value.Length != count)
-      {
-        return new Result<TValue[]>(new ArgumentException($"Collection count should be equal to {count}.", validatable.ParamName));
-      }
-
-      return validatable.Value;
-    }
-
-    public static Result<TValue[]> IfCountGreaterThan<TValue>(this Validatable<TValue[]> validatable, int count)
-    {
-      if (validatable.Value.Length > count)
-      {
-        return new Result<TValue[]>(new ArgumentException($"Collection count should not be greater than {count}.", validatable.ParamName));
-      }
-
-      return validatable.Value;
-    }
-    public static Result<TValue[]> IfCountLessThan<TValue>(this Validatable<TValue[]> validatable, int count)
-    {
-      if (validatable.Value.Length < count)
-      {
-        return new Result<TValue[]>(new ArgumentException($"Collection count should not be less than {count}.", validatable.ParamName));
-      }
-
-      return validatable.Value;
-    }
-    public static Result<TValue[]> IfHasNullElements<TValue>(this Validatable<TValue[]> validatable)
-    {
-      if (validatable.Value.Any(x => x == null))
-      {
-        return new Result<TValue[]>(new ArgumentException($"Collection should not have null elements.", validatable.ParamName));
-      }
-
-      return validatable.Value;
-    }
-    public static Result<TValue[]> IfContains<TValue>(this Validatable<TValue[]> validatable, TValue needle)
-    {
-      if (validatable.Value.Contains(needle))
-      {
-        return new Result<TValue[]>(new ArgumentException("Collection should not contain element.", validatable.ParamName));
-      }
-
-      return validatable.Value;
     }
 
-    public static Result<TValue[]> IfNotContains<TValue>(this Validatable<TValue[]> validatable, TValue needle)
+    public static Result<Validatable<TValue[]>> IfCountNotEquals<TValue>(this Result<Validatable<TValue[]>> result, int count)
     {
-      if (!validatable.Value.Contains(needle))
-      {
-        return new Result<TValue[]>(new ArgumentException("Collection should contain element.", validatable.ParamName));
-      }
+      return result.Match(Validate, error => new(error));
 
-      return validatable.Value;
+      Result<Validatable<TValue[]>> Validate(Validatable<TValue[]> validatable)
+      {
+        if (validatable.Value.Length != count)
+        {
+          return new Result<Validatable<TValue[]>>(new ArgumentException($"Collection count should be equal to {count}.",
+            validatable.ParamName));
+        }
+
+        return validatable;
+      }
+    }
+
+    public static Result<Validatable<TValue[]>> IfCountGreaterThan<TValue>(this Result<Validatable<TValue[]>> result, int count)
+    {
+      return result.Match(Validate, error => new(error));
+
+      Result<Validatable<TValue[]>> Validate(Validatable<TValue[]> validatable)
+      {
+        if (validatable.Value.Length > count)
+        {
+          return new Result<Validatable<TValue[]>>(new ArgumentException($"Collection count should not be greater than {count}.",
+            validatable.ParamName));
+        }
+
+        return validatable;
+      }
+    }
+    public static Result<Validatable<TValue[]>> IfCountLessThan<TValue>(this Result<Validatable<TValue[]>> result, int count)
+    {
+      return result.Match(Validate, error => new(error));
+
+      Result<Validatable<TValue[]>> Validate(Validatable<TValue[]> validatable)
+      {
+        if (validatable.Value.Length < count)
+        {
+          return new Result<Validatable<TValue[]>>(new ArgumentException($"Collection count should not be less than {count}.",
+            validatable.ParamName));
+        }
+
+        return validatable;
+      }
+    }
+    public static Result<Validatable<TValue[]>> IfHasNullElements<TValue>(this Result<Validatable<TValue[]>> result)
+    {
+      return result.Match(Validate, error => new(error));
+
+      Result<Validatable<TValue[]>> Validate(Validatable<TValue[]> validatable)
+      {
+        if (validatable.Value.Any(x => x == null))
+        {
+          return new Result<Validatable<TValue[]>>(new ArgumentException($"Collection should not have null elements.",
+            validatable.ParamName));
+        }
+
+        return validatable;
+      }
+    }
+    public static Result<Validatable<TValue[]>> IfContains<TValue>(this Result<Validatable<TValue[]>> result, TValue needle)
+    {
+      return result.Match(Validate, error => new(error));
+
+      Result<Validatable<TValue[]>> Validate(Validatable<TValue[]> validatable)
+      {
+        if (validatable.Value.Contains(needle))
+        {
+          return new Result<Validatable<TValue[]>>(new ArgumentException("Collection should not contain element.",
+            validatable.ParamName));
+        }
+
+        return validatable;
+      }
+    }
+
+    public static Result<Validatable<TValue[]>> IfNotContains<TValue>(this Result<Validatable<TValue[]>> result, TValue needle)
+    {
+      return result.Match(Validate, error => new(error));
+
+      Result<Validatable<TValue[]>> Validate(Validatable<TValue[]> validatable)
+      {
+        if (!validatable.Value.Contains(needle))
+        {
+          return new Result<Validatable<TValue[]>>(
+            new ArgumentException("Collection should contain element.", validatable.ParamName));
+        }
+
+        return validatable;
+      }
     }
   }
 }

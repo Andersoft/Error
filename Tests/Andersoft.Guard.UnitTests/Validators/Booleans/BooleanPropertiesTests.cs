@@ -28,10 +28,10 @@ public class BooleanPropertiesTests
 
     // Act
     var result = person.Error().IfTrue(p => p.Id == 2)
-      .Match(value => value, error => default(bool?));
+      .Match(success => success.Value, error => default!);
 
     // Assert
-    result.Should().HaveValue().And.BeFalse();
+    result.Should().Be(person);
   }
 
   [Test]
@@ -56,9 +56,9 @@ public class BooleanPropertiesTests
 
     // Act
     var result = person.Error().IfFalse(p => p.Id == 1)
-      .Match(value => value, error => default(bool?));
+      .Match(success => success.Value, error => default!);
 
     // Assert
-    result.Should().HaveValue().And.BeTrue();
+    result.Should().Be(person);
   }
 }

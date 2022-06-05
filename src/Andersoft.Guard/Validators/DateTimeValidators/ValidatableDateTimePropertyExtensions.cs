@@ -5,46 +5,58 @@ namespace Andersoft.Guard.Validators.DateTimeValidators;
 
 public static class ValidatableDateTimePropertyExtensions
 {
-  public static Result<TValue> IfDateTimeKind<TValue>(
-    this Validatable<TValue> validatable, 
+  public static Result<Validatable<TValue>> IfDateTimeKind<TValue>(
+    this Result<Validatable<TValue>> result, 
     Func<TValue, DateTime> func, 
     DateTimeKind kind, 
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    if (func(validatable.Value).Kind == kind)
-    {
-      return new Result<TValue>(new ArgumentException($"Value should not be {kind}.", $"{validatable.ParamName}: {funcName}"));
-    }
+    return result.Match(Validate, error => new(error));
 
-    return validatable.Value;
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
+    {
+      if (func(validatable.Value).Kind == kind)
+      {
+        return new Result<Validatable<TValue>>(new ArgumentException($"Value should not be {kind}.",
+          $"{validatable.ParamName}: {funcName}"));
+      }
+
+      return validatable;
+    }
   }
 
-  public static Result<TValue> IfDateTimeNotKind<TValue>(
-    this Validatable<TValue> validatable,
+  public static Result<Validatable<TValue>> IfDateTimeNotKind<TValue>(
+    this Result<Validatable<TValue>> result,
     Func<TValue, DateTime> func,
     DateTimeKind kind,
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    if (func(validatable.Value).Kind != kind)
+    return result.Match(Validate, error => new(error));
+
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
-      return new Result<TValue>(new ArgumentException($"Value should be {kind}.", $"{validatable.ParamName}: {funcName}"));
+      if (func(validatable.Value).Kind != kind)
+      {
+        return new Result<Validatable<TValue>>(new ArgumentException($"Value should be {kind}.",
+          $"{validatable.ParamName}: {funcName}"));
+      }
+
+      return validatable;
     }
-
-    return validatable.Value;
   }
 
-  public static Result<TValue> IfUtc<TValue>(
-    this Validatable<TValue> validatable, 
+  public static Result<Validatable<TValue>> IfUtc<TValue>(
+    this Result<Validatable<TValue>> result, 
     Func<TValue, DateTime> func,
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    return IfDateTimeKind(validatable, func, DateTimeKind.Utc, funcName);
+    return IfDateTimeKind(result, func, DateTimeKind.Utc, funcName);
   }
 
-  public static Result<TValue> IfNotUtc<TValue>(this Validatable<TValue> validatable,
+  public static Result<Validatable<TValue>> IfNotUtc<TValue>(this Result<Validatable<TValue>> result,
     Func<TValue, DateTime> func,
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    return IfDateTimeNotKind(validatable, func, DateTimeKind.Utc, funcName);
+    return IfDateTimeNotKind(result, func, DateTimeKind.Utc, funcName);
   }
 }

@@ -28,7 +28,7 @@ public class ComparablePropertiesTests
         var value = new { Property = 5 };
 
         // Act
-       var result = value.Error().IfGreaterThan(v => v.Property, 6);
+       var result = value.Error().IfGreaterThan(v => v.Property, 6).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -41,7 +41,7 @@ public class ComparablePropertiesTests
         var value = new { Property = 5 };
 
         // Act
-       var result = value.Error().IfGreaterThan(v => v.Property, 5);
+       var result = value.Error().IfGreaterThan(v => v.Property, 5).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -68,7 +68,7 @@ public class ComparablePropertiesTests
         var value = new { Property = 5 };
 
         // Act
-       var result = value.Error().IfLessThan(v => v.Property, 5);
+       var result = value.Error().IfLessThan(v => v.Property, 5).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -81,7 +81,7 @@ public class ComparablePropertiesTests
         var value = new { Property = 5 };
 
         // Act
-       var result = value.Error().IfLessThan(v => v.Property, 5);
+       var result = value.Error().IfLessThan(v => v.Property, 5).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -108,7 +108,7 @@ public class ComparablePropertiesTests
         var value = new { Property = -5 };
 
         // Act
-       var result = value.Error().IfPositive(v => v.Property);
+       var result = value.Error().IfPositive(v => v.Property).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -121,7 +121,7 @@ public class ComparablePropertiesTests
         var value = new { Property = 0 };
 
         // Act
-       var result = value.Error().IfPositive(v => v.Property);
+       var result = value.Error().IfPositive(v => v.Property).Match(success => success.Value, error => default!); 
 
         // Assert
         result.Should().Be(value);
@@ -148,7 +148,7 @@ public class ComparablePropertiesTests
         var value = new { Property = 5 };
 
         // Act
-       var result = value.Error().IfNegative(v => v.Property);
+       var result = value.Error().IfNegative(v => v.Property).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -161,7 +161,7 @@ public class ComparablePropertiesTests
         var value = new { Property = 0 };
 
         // Act
-       var result = value.Error().IfNegative(v => v.Property);
+       var result = value.Error().IfNegative(v => v.Property).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -188,7 +188,7 @@ public class ComparablePropertiesTests
         var value = new { Property = 5 };
 
         // Act
-       var result = value.Error().IfOutOfRange(v => v.Property, 4, 6);
+       var result = value.Error().IfOutOfRange(v => v.Property, 4, 6).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -201,7 +201,7 @@ public class ComparablePropertiesTests
         var value = new { Property = 5 };
 
         // Act
-       var result = value.Error().IfOutOfRange(v => v.Property, 5, 6);
+       var result = value.Error().IfOutOfRange(v => v.Property, 5, 6).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -214,7 +214,7 @@ public class ComparablePropertiesTests
         var value = new { Property = 5 };
 
         // Act
-       var result = value.Error().IfOutOfRange(v => v.Property, 4, 5);
+       var result = value.Error().IfOutOfRange(v => v.Property, 4, 5).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);

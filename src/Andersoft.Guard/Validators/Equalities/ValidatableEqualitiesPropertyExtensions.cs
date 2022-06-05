@@ -5,103 +5,139 @@ namespace Andersoft.Guard.Validators.Equalities;
 
 public static class ValidatableEqualitiesPropertyExtensions
 {
-  public static Result<TValue> IfEquals<TValue, TOther>(
-    this Validatable<TValue> validatable,
+  public static Result<Validatable<TValue>> IfEquals<TValue, TOther>(
+    this Result<Validatable<TValue>> result,
     Func<TValue, TOther> func,
     TOther other,
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    if (EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
-    {
-      return new Result<TValue>(new ArgumentException($"Value should not be equal to {other}.", $"{validatable.ParamName}: {funcName}"));
-    }
+    return result.Match(Validate, error => new(error));
 
-    return validatable.Value;
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
+    {
+      if (EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
+      {
+        return new Result<Validatable<TValue>>(new ArgumentException($"Value should not be equal to {other}.",
+          $"{validatable.ParamName}: {funcName}"));
+      }
+
+      return validatable;
+    }
   }
 
-  public static Result<TValue> IfNotEquals<TValue, TOther>(
-    this Validatable<TValue> validatable,
+  public static Result<Validatable<TValue>> IfNotEquals<TValue, TOther>(
+    this Result<Validatable<TValue>> result,
     Func<TValue, TOther> func, 
     TOther other,
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    if (!EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
-    {
-      return new Result<TValue>(new ArgumentException($"Value should be equal to {other}.", $"{validatable.ParamName}: {funcName}"));
-    }
+    return result.Match(Validate, error => new(error));
 
-    return validatable.Value;
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
+    {
+      if (!EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
+      {
+        return new Result<Validatable<TValue>>(new ArgumentException($"Value should be equal to {other}.",
+          $"{validatable.ParamName}: {funcName}"));
+      }
+
+      return validatable;
+    }
   }
 
-  private static Result<TValue> IfEquals<TValue, TOther>(
-    this Validatable<TValue> validatable,
+  private static Result<Validatable<TValue>> IfEquals<TValue, TOther>(
+    this Result<Validatable<TValue>> result,
     Func<TValue, TOther> func,
     TOther other,
     string errorMessage,
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    if (EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
-    {
-      return new Result<TValue>(new ArgumentException(errorMessage, $"{validatable.ParamName}: {funcName}"));
-    }
+    return result.Match(Validate, error => new(error));
 
-    return validatable.Value;
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
+    {
+      if (EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
+      {
+        return new Result<Validatable<TValue>>(new ArgumentException(errorMessage,
+          $"{validatable.ParamName}: {funcName}"));
+      }
+
+      return validatable;
+    }
   }
 
-  private static Result<TValue> IfNotEquals<TValue, TOther>(
-    this Validatable<TValue> validatable,
+  private static Result<Validatable<TValue>> IfNotEquals<TValue, TOther>(
+    this Result<Validatable<TValue>> result,
     Func<TValue, TOther> func,
     TOther other,
     string errorMessage,
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    if (!EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
+    return result.Match(Validate, error => new(error));
+
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
-      return new Result<TValue>(new ArgumentException(errorMessage, $"{validatable.ParamName}: {funcName}"));
+      if (!EqualityComparer<TOther>.Default.Equals(func(validatable.Value), other))
+      {
+        return new Result<Validatable<TValue>>(new ArgumentException(errorMessage,
+          $"{validatable.ParamName}: {funcName}"));
+      }
+
+      return validatable;
     }
-
-    return validatable.Value;
   }
 
-  public static Result<TValue> IfDefault<TValue, TOther>(
-    this Validatable<TValue> validatable,
+  public static Result<Validatable<TValue>> IfDefault<TValue, TOther>(
+    this Result<Validatable<TValue>> result,
     Func<TValue, TOther> func,
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    return IfEquals(validatable, func, default!, "Value should not be default.", funcName);
+    return IfEquals(result, func, default!, "Value should not be default.", funcName);
   }
 
-  public static Result<TValue> IfNotDefault<TValue, TOther>(
-    this Validatable<TValue> validatable,
+  public static Result<Validatable<TValue>> IfNotDefault<TValue, TOther>(
+    this Result<Validatable<TValue>> result,
     Func<TValue, TOther> func,
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    return IfNotEquals(validatable, func, default!, "Value should be default.", funcName);
+    return IfNotEquals(result, func, default!, "Value should be default.", funcName);
   }
 
-  public static Result<TValue> IfNull<TValue, TOther>(
-    this Validatable<TValue> validatable,
+  public static Result<Validatable<TValue>> IfNull<TValue, TOther>(
+    this Result<Validatable<TValue>> result,
     Func<TValue, TOther> func,
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    if (func(validatable.Value) is null)
+    return result.Match(Validate, error => new(error));
+
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
-      return new Result<TValue>(new ArgumentException("Value cannot be null.", $"{validatable.ParamName}: {funcName}"));
-    }
+      if (func(validatable.Value) is null)
+      {
+        return new Result<Validatable<TValue>>(new ArgumentException("Value cannot be null.",
+          $"{validatable.ParamName}: {funcName}"));
+      }
 
-    return validatable.Value;
+      return validatable;
+    }
   }
 
-  public static Result<TValue> IfNotNull<TValue, TOther>(
-    this Validatable<TValue> validatable,
+  public static Result<Validatable<TValue>> IfNotNull<TValue, TOther>(
+    this Result<Validatable<TValue>> result,
     Func<TValue, TOther> func,
     [CallerArgumentExpression("func")] string? funcName = null) where TValue : notnull
   {
-    if (func(validatable.Value) is not null)
-    {
-      return new Result<TValue>(new ArgumentException("Value should be null.", $"{validatable.ParamName}: {funcName}"));
-    }
+    return result.Match(Validate, error => new(error));
 
-    return validatable.Value;
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
+    {
+      if (func(validatable.Value) is not null)
+      {
+        return new Result<Validatable<TValue>>(new ArgumentException("Value should be null.",
+          $"{validatable.ParamName}: {funcName}"));
+      }
+
+      return validatable;
+    }
   }
 }

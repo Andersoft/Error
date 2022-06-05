@@ -28,7 +28,7 @@ public class EnumsTests
         TestEnum value = TestEnum.Value1;
 
         // Act
-       var result = value.Error().IfOutOfRange();
+       var result = value.Error().IfOutOfRange().Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);

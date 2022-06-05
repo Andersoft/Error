@@ -1,6 +1,7 @@
 using Andersoft.Guard.Validators;
 using Andersoft.Guard.Validators.Collections;
 using FluentAssertions;
+using LanguageExt.Common;
 
 namespace Andersoft.Guard.UnitTests.Validators.Collections;
 
@@ -29,7 +30,7 @@ public class CollectionsTests
 
         // Act
        var result = collection.Error().IfEmpty()
-         .Match(success => success, error => null!);
+         .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().BeEquivalentTo(collection);
@@ -57,7 +58,7 @@ public class CollectionsTests
 
         // Act
        var result = collection.Error().IfNotEmpty()
-         .Match(success => success, error => null!);
+         .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().BeEquivalentTo(collection);
@@ -85,7 +86,7 @@ public class CollectionsTests
 
         // Act
        var result = collection.Error().IfCountEquals(2)
-         .Match(success => success, error => null!);
+         .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().BeEquivalentTo(collection);
@@ -113,7 +114,7 @@ public class CollectionsTests
 
         // Act
        var result = collection.Error().IfCountNotEquals(1)
-         .Match(success => success, error => null!);
+         .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().BeEquivalentTo(collection);
@@ -141,7 +142,7 @@ public class CollectionsTests
 
         // Act
        var result = collection.Error().IfCountGreaterThan(2)
-         .Match(success => success, error => null!);
+         .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().BeEquivalentTo(collection);
@@ -155,7 +156,7 @@ public class CollectionsTests
 
         // Act
        var result = collection.Error().IfCountGreaterThan(1)
-         .Match(success => success, error => null!);
+         .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().BeEquivalentTo(collection);
@@ -183,7 +184,7 @@ public class CollectionsTests
 
         // Act
        var result = collection.Error().IfCountLessThan(0)
-         .Match(success => success, error => null!);
+         .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().BeEquivalentTo(collection);
@@ -197,7 +198,7 @@ public class CollectionsTests
 
         // Act
        var result = collection.Error().IfCountLessThan(1)
-         .Match(success => success, error => null!);
+         .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().BeEquivalentTo(collection);
@@ -225,7 +226,7 @@ public class CollectionsTests
 
         // Act
        var result = collection.Error().IfHasNullElements()
-         .Match(success => success, error => null!);
+         .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().BeEquivalentTo(collection);
@@ -258,10 +259,10 @@ public class CollectionsTests
 
         // Act
        var result = collection.Error().IfContains("ho1")
-         .Match(success => success, error => null!);
+         .Match(success => success.Value, error => null!);
 
         var results2 = collection2.Error().IfContains(3)
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().BeEquivalentTo(collection);
@@ -296,10 +297,10 @@ public class CollectionsTests
 
         // Act
        var result = collection.Error().IfNotContains("hey")
-         .Match(success => success, error => null!);
+         .Match(success => success.Value, error => null!);
 
         var result2 = collection2.Error().IfNotContains(1)
-          .Match(success => success, error => null!);
+          .Match(success => success.Value, error => null!);
 
         // Assert
         result.Should().BeEquivalentTo(collection);

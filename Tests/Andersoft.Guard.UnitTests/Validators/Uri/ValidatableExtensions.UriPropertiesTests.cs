@@ -28,7 +28,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri("https://www.google.com") };
 
         // Act
-       var result = person.Error().IfHttp(p => p.Uri);
+       var result = person.Error().IfHttp(p => p.Uri).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -55,7 +55,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri("http://www.google.com") };
 
         // Act
-       var result = person.Error().IfNotHttp(p => p.Uri);
+       var result = person.Error().IfNotHttp(p => p.Uri).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -82,7 +82,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri("http://www.google.com") };
 
         // Act
-       var result = person.Error().IfHttps(p => p.Uri);
+       var result = person.Error().IfHttps(p => p.Uri).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -109,7 +109,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri("https://www.google.com") };
 
         // Act
-       var result = person.Error().IfNotHttps(p => p.Uri);
+       var result = person.Error().IfNotHttps(p => p.Uri).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -136,7 +136,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri($"{System.Uri.UriSchemeHttp}://www.google.com") };
 
         // Act
-       var result = person.Error().IfScheme(p => p.Uri, System.Uri.UriSchemeGopher);
+       var result = person.Error().IfScheme(p => p.Uri, System.Uri.UriSchemeGopher).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -163,7 +163,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri($"{System.Uri.UriSchemeGopher}://www.google.com") };
 
         // Act
-       var result = person.Error().IfNotScheme(p => p.Uri, System.Uri.UriSchemeGopher);
+       var result = person.Error().IfNotScheme(p => p.Uri, System.Uri.UriSchemeGopher).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -190,7 +190,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri("/path/to/file", UriKind.Relative) };
 
         // Act
-       var result = person.Error().IfAbsolute(p => p.Uri);
+       var result = person.Error().IfAbsolute(p => p.Uri).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -217,7 +217,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri("http://www.google.com") };
 
         // Act
-       var result = person.Error().IfRelative(p => p.Uri);
+       var result = person.Error().IfRelative(p => p.Uri).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -244,7 +244,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri("http://www.google.com") };
 
         // Act
-       var result = person.Error().IfNotAbsolute(p => p.Uri);
+       var result = person.Error().IfNotAbsolute(p => p.Uri).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -271,7 +271,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri("/path/to/file", UriKind.Relative) };
 
         // Act
-       var result = person.Error().IfNotRelative(p => p.Uri);
+       var result = person.Error().IfNotRelative(p => p.Uri).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -298,7 +298,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri("http://www.google.com:8080") };
 
         // Act
-       var result = person.Error().IfPort(p => p.Uri, 80);
+       var result = person.Error().IfPort(p => p.Uri, 80).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -325,7 +325,7 @@ public class UriPropertiesTests
         var person = new { Uri = new System.Uri("http://www.google.com:80") };
 
         // Act
-       var result = person.Error().IfNotPort(p => p.Uri, 80);
+       var result = person.Error().IfNotPort(p => p.Uri, 80).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);

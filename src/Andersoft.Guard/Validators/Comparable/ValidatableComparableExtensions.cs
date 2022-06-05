@@ -6,56 +6,72 @@ namespace Andersoft.Guard.Validators.Comparable;
 public static class ValidatableComparableExtensions
 {
 
-  public static Result<TValue> IfGreaterThan<TValue>(this Validatable<TValue> validatable, TValue other) where TValue : notnull
+  public static Result<Validatable<TValue>> IfGreaterThan<TValue>(this Result<Validatable<TValue>> result, TValue other) where TValue : notnull
   {
-    if (Comparer<TValue>.Default.Compare(validatable.Value, other) > 0)
+    return result.Match(Validate, error => new(error));
+
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
-      return new Result<TValue>(new ArgumentOutOfRangeException(
-        validatable.ParamName,
-        validatable.Value,
-        $"Value should not be greater than {other}."));
-    }
+      if (Comparer<TValue>.Default.Compare(validatable.Value, other) > 0)
+      {
+        return new Result<Validatable<TValue>>(new ArgumentOutOfRangeException(
+          validatable.ParamName,
+          validatable.Value,
+          $"Value should not be greater than {other}."));
+      }
 
-    return validatable.Value;
+      return validatable;
+    }
   }
 
-  public static Result<TValue> IfLessThan<TValue>(this Validatable<TValue> validatable, TValue other) where TValue : notnull
+  public static Result<Validatable<TValue>> IfLessThan<TValue>(this Result<Validatable<TValue>> result, TValue other) where TValue : notnull
   {
-    if (Comparer<TValue>.Default.Compare(validatable.Value, other) < 0)
+    return result.Match(Validate, error => new(error));
+
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
     {
-      return new Result<TValue>(new ArgumentOutOfRangeException(
-        validatable.ParamName,
-        validatable.Value,
-        $"Value should not be less than {other}."));
+      if (Comparer<TValue>.Default.Compare(validatable.Value, other) < 0)
+      {
+        return new Result<Validatable<TValue>>(new ArgumentOutOfRangeException(
+          validatable.ParamName,
+          validatable.Value,
+          $"Value should not be less than {other}."));
+      }
+
+      return validatable;
     }
-
-    return validatable.Value;
   }
 
-  public static Result<TValue> IfPositive<TValue>(this Validatable<TValue> validatable) where TValue : notnull
+  public static Result<Validatable<TValue>> IfPositive<TValue>(this Result<Validatable<TValue>> result) where TValue : notnull
   {
-    return IfGreaterThan(validatable, default!);
+    return IfGreaterThan(result, default!);
   }
 
-  public static Result<TValue> IfNegative<TValue>(this Validatable<TValue> validatable) where TValue : notnull
+  public static Result<Validatable<TValue>> IfNegative<TValue>(this Result<Validatable<TValue>> result) where TValue : notnull
   {
-    return IfLessThan(validatable, default!);
+    return IfLessThan(result, default!);
   }
 
-  public static Result<TValue> IfOutOfRange<TValue>(
-    this Validatable<TValue> validatable,
+  public static Result<Validatable<TValue>> IfOutOfRange<TValue>(
+    this Result<Validatable<TValue>> result,
     TValue min,
     TValue max) where TValue : notnull
   {
-    if (Comparer<TValue>.Default.Compare(validatable.Value, min) < 0 || Comparer<TValue>.Default.Compare(validatable.Value, max) > 0)
-    {
-      return new Result<TValue>(new ArgumentOutOfRangeException(
-        validatable.ParamName,
-        validatable.Value,
-        $"Value should be between {min} and {max}."));
-    }
+    return result.Match(Validate, error => new(error));
 
-    return validatable.Value;
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
+    {
+      if (Comparer<TValue>.Default.Compare(validatable.Value, min) < 0 ||
+          Comparer<TValue>.Default.Compare(validatable.Value, max) > 0)
+      {
+        return new Result<Validatable<TValue>>(new ArgumentOutOfRangeException(
+          validatable.ParamName,
+          validatable.Value,
+          $"Value should be between {min} and {max}."));
+      }
+
+      return validatable;
+    }
   }
 
 

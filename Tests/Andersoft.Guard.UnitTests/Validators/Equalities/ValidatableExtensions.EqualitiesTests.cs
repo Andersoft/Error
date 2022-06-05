@@ -28,7 +28,7 @@ public class EqualitiesTests
     System.DateTime value = System.DateTime.Now;
 
     // Act
-    var result = value.Error().IfDefault();
+    var result = value.Error().IfDefault().Match(x => x.Value, error => default!); ;
 
     // Assert
     result.Should().Be(value);
@@ -55,7 +55,7 @@ public class EqualitiesTests
     System.DateTime value = default;
 
     // Act
-    var result = value.Error().IfNotDefault();
+    var result = value.Error().IfNotDefault().Match(x => x.Value, error => default);
 
     // Assert
     result.Should().Be(value);
@@ -82,7 +82,7 @@ public class EqualitiesTests
     int value = 5;
 
     // Act
-    var result = value.Error().IfEquals(6);
+    var result = value.Error().IfEquals(6).Match(x => x.Value, error => default!); ;
 
     // Assert
     result.Should().Be(value);
@@ -109,7 +109,7 @@ public class EqualitiesTests
     int value = 5;
 
     // Act
-    var result = value.Error().IfNotEquals(5);
+    var result = value.Error().IfNotEquals(5).Match(x => x.Value, error => default!); ;
 
     // Assert
     result.Should().Be(value);
@@ -138,7 +138,7 @@ public class EqualitiesTests
     var value2 = new object();
 
     // Act
-    var result = value1.Error().IfEquals(value2);
+    var result = value1.Error().IfEquals(value2).Match(x => x.Value, error => default!);
 
     // Assert
     result.Should().Be(value1);
@@ -167,7 +167,7 @@ public class EqualitiesTests
     var value2 = value1;
 
     // Act
-    var result = value1.Error().IfNotEquals(value2);
+    var result = value1.Error().IfNotEquals(value2).Match(x => x.Value, error => default!); ;
 
     // Assert
     result.Should().Be(value1);
@@ -196,7 +196,7 @@ public class EqualitiesTests
     var value2 = new OverrideEqualsType(2);
 
     // Act
-    var result = value1.Error().IfEquals(value2);
+    var result = value1.Error().IfEquals(value2).Match(x => x.Value, error => default!);
 
     // Assert
     result.Should().Be(value1);
@@ -225,7 +225,7 @@ public class EqualitiesTests
     var value2 = new OverrideEqualsType(1);
 
     // Act
-    var result = value1.Error().IfNotEquals(value2);
+    var result = value1.Error().IfNotEquals(value2).Match(x => x.Value, error => default!); ;
 
     // Assert
     result.Should().Be(value1);

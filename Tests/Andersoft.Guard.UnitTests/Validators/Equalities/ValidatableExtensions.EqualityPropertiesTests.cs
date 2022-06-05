@@ -28,7 +28,7 @@ public class EqualityPropertiesTests
         var value = new { Property = "value" };
 
         // Act
-       var result = value.Error().IfNull(v => v.Property);
+       var result = value.Error().IfNull(v => v.Property).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -55,7 +55,7 @@ public class EqualityPropertiesTests
         var value = new { Property = default(string) };
 
         // Act
-       var result = value.Error().IfNotNull(v => v.Property);
+       var result = value.Error().IfNotNull(v => v.Property).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -82,7 +82,7 @@ public class EqualityPropertiesTests
         var person = new { BirthDate = System.DateTime.Now };
 
         // Act
-       var result = person.Error().IfDefault(p => p.BirthDate);
+       var result = person.Error().IfDefault(p => p.BirthDate).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -109,7 +109,7 @@ public class EqualityPropertiesTests
         var person = new { BirthDate = default(System.DateTime) };
 
         // Act
-       var result = person.Error().IfNotDefault(p => p.BirthDate);
+       var result = person.Error().IfNotDefault(p => p.BirthDate).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -136,7 +136,7 @@ public class EqualityPropertiesTests
         var value = new { Property = 5 };
 
         // Act
-       var result = value.Error().IfEquals(v => v.Property, 6);
+       var result = value.Error().IfEquals(v => v.Property, 6).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);
@@ -163,7 +163,7 @@ public class EqualityPropertiesTests
         var value = new { Property = 5 };
 
         // Act
-       var result = value.Error().IfNotEquals(v => v.Property, 5);
+       var result = value.Error().IfNotEquals(v => v.Property, 5).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(value);

@@ -28,7 +28,7 @@ public class DateTimePropertiesTests
         var person = new { BirthDate = System.DateTime.Now };
 
         // Act
-       var result = person.Error().IfUtc(p => p.BirthDate);
+       var result = person.Error().IfUtc(p => p.BirthDate).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -55,7 +55,7 @@ public class DateTimePropertiesTests
         var person = new { BirthDate = System.DateTime.UtcNow };
 
         // Act
-       var result = person.Error().IfNotUtc(p => p.BirthDate);
+       var result = person.Error().IfNotUtc(p => p.BirthDate).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -82,7 +82,7 @@ public class DateTimePropertiesTests
         var person = new { BirthDate = System.DateTime.Now };
 
         // Act
-       var result = person.Error().IfDateTimeKind(p => p.BirthDate, DateTimeKind.Utc);
+       var result = person.Error().IfDateTimeKind(p => p.BirthDate, DateTimeKind.Utc).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);
@@ -109,7 +109,7 @@ public class DateTimePropertiesTests
         var person = new { BirthDate = System.DateTime.UtcNow };
 
         // Act
-       var result = person.Error().IfDateTimeNotKind(p => p.BirthDate, DateTimeKind.Utc);
+       var result = person.Error().IfDateTimeNotKind(p => p.BirthDate, DateTimeKind.Utc).Match(success => success.Value, error => default!); ;
 
         // Assert
         result.Should().Be(person);

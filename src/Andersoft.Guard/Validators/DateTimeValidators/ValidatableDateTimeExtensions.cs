@@ -5,33 +5,43 @@ namespace Andersoft.Guard.Validators.DateTimeValidators;
 
 public static class ValidatableDateTimeExtensions
 {
-  public static Result<DateTime> IfDateTimeKind(this Validatable<DateTime> validatable, DateTimeKind kind)
+  public static Result<Validatable<DateTime>> IfDateTimeKind(this Result<Validatable<DateTime>> result, DateTimeKind kind)
   {
-    if (validatable.Value.Kind == kind)
+    return result.Match(Validate, error => new(error));
+
+    Result<Validatable<DateTime>> Validate(Validatable<DateTime> validatable)
     {
-      return new Result<DateTime>(new ArgumentException($"Value should not be {kind}.", validatable.ParamName));
-    }
+      if (validatable.Value.Kind == kind)
+      {
+        return new Result<Validatable<DateTime>>(new ArgumentException($"Value should not be {kind}.", validatable.ParamName));
+      }
 
-    return validatable.Value;
+      return validatable;
+    }
   }
 
-  public static Result<DateTime> IfDateTimeNotKind(this Validatable<DateTime> validatable, DateTimeKind kind)
+  public static Result<Validatable<DateTime>> IfDateTimeNotKind(this Result<Validatable<DateTime>> result, DateTimeKind kind)
   {
-    if (validatable.Value.Kind != kind)
+    return result.Match(Validate, error => new(error));
+
+    Result<Validatable<DateTime>> Validate(Validatable<DateTime> validatable)
     {
-      return new Result<DateTime>(new ArgumentException($"Value should be {kind}.", validatable.ParamName));
+      if (validatable.Value.Kind != kind)
+      {
+        return new Result<Validatable<DateTime>>(new ArgumentException($"Value should be {kind}.", validatable.ParamName));
+      }
+
+      return validatable;
     }
-
-    return validatable.Value;
   }
 
-  public static Result<DateTime> IfUtc(this Validatable<DateTime> validatable)
+  public static Result<Validatable<DateTime>> IfUtc(this Result<Validatable<DateTime>> result)
   {
-    return IfDateTimeKind(validatable, DateTimeKind.Utc);
+    return IfDateTimeKind(result, DateTimeKind.Utc);
   }
 
-  public static Result<DateTime> IfNotUtc(this Validatable<DateTime> validatable)
+  public static Result<Validatable<DateTime>> IfNotUtc(this Result<Validatable<DateTime>> result)
   {
-    return IfDateTimeNotKind(validatable, DateTimeKind.Utc);
+    return IfDateTimeNotKind(result, DateTimeKind.Utc);
   }
 }

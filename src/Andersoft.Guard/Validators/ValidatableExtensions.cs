@@ -6,11 +6,11 @@ namespace Andersoft.Guard.Validators;
 
 public static class ValidatableExtensions
 {
-  public static Validatable<TValue> Error<TValue>(this TValue value,
+  public static Result<Validatable<TValue>> Error<TValue>(this TValue value,
     [CallerArgumentExpression("value")] string? paramName = null)
     where TValue : notnull
   {
-    return new(value, paramName!);
+    return new Validatable<TValue>(value, paramName!);
   }
 
   public static Result<Validatable<TValue>> ErrorIfNull<TValue>(

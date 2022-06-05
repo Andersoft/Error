@@ -4,17 +4,22 @@ namespace Andersoft.Guard.Validators.EnumValidators;
 
 public static class ValidatableEnumExtensions
 {
-  public static Result<TValue> IfOutOfRange<TValue>(this Validatable<TValue> validatable)
+  public static Result<Validatable<TValue>> IfOutOfRange<TValue>(this Result<Validatable<TValue>> result)
   where TValue : struct, Enum
   {
-    if (!Enum.IsDefined(validatable.Value))
-    {
-      return new Result<TValue>(new ArgumentOutOfRangeException(
-        validatable.ParamName,
-        validatable.Value,
-        "Value should be defined in enum."));
-    }
+    return result.Match(Validate, error => new (error));
 
-    return validatable.Value;
+    Result<Validatable<TValue>> Validate(Validatable<TValue> validatable)
+    {
+      if (!Enum.IsDefined(validatable.Value))
+      {
+        return new Result<Validatable<TValue>>(new ArgumentOutOfRangeException(
+          validatable.ParamName,
+          validatable.Value,
+          "Value should be defined in enum."));
+      }
+
+      return validatable;
+    }
   }
 }

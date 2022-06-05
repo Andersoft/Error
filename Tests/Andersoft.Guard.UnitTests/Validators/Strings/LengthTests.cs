@@ -32,7 +32,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
       // Act
       var result = value.Error()
                         .IfLongerThan(100)
-                        .Match(success => success, error => default(string?));
+                        .Match(success => success.Value, error => default!);
 
       // Assert
       result.Should().Be(value);
@@ -61,7 +61,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
       // Act
       var result = value.Error()
         .IfShorterThan(2)
-        .Match(success => success, error => default(string?));
+        .Match(success => success.Value, error => default!);
 
       // Assert
       result.Should().Be(value);
@@ -89,7 +89,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
 
       // Act
       var result = value.Error().IfLengthEquals(100)
-        .Match(success => success, error => default(string?));
+        .Match(success => success.Value, error => default!);
 
       // Assert
       result.Should().Be(value);
@@ -117,7 +117,7 @@ namespace Andersoft.Guard.UnitTests.Validators.Strings
 
       // Act
       var result = value.Error().IfLengthNotEquals(5)
-        .Match(success => success, error => default(string?));
+        .Match(success => success.Value, error => default!);
 
       // Assert
       result.Should().Be(value);
