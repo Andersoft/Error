@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Andersoft.Guard.Validators;
+﻿using Andersoft.Guard.Validators;
 using Andersoft.Guard.Validators.Booleans;
 using FluentAssertions;
-using LanguageExt;
-using LanguageExt.Common;
 
 namespace Andersoft.Guard.UnitTests.Validators.Booleans
 {

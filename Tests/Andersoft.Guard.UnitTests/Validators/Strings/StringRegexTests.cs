@@ -2,7 +2,6 @@
 using Andersoft.Guard.Validators;
 using Andersoft.Guard.Validators.Strings;
 using FluentAssertions;
-using LanguageExt;
 
 namespace Andersoft.Guard.UnitTests.Validators.Strings;
 

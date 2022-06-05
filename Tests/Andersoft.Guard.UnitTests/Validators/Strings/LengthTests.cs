@@ -1,9 +1,6 @@
-using System.Reflection.Metadata.Ecma335;
 using Andersoft.Guard.Validators;
 using Andersoft.Guard.Validators.Strings;
 using FluentAssertions;
-using LanguageExt;
-using LanguageExt.Common;
 
 namespace Andersoft.Guard.UnitTests.Validators.Strings
 {

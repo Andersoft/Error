@@ -1,7 +1,6 @@
 using Andersoft.Guard.Validators;
 using Andersoft.Guard.Validators.Collections;
 using FluentAssertions;
-using LanguageExt.Common;
 
 namespace Andersoft.Guard.UnitTests.Validators.Collections;
 

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Andersoft.Guard.Validators;
+﻿using Andersoft.Guard.Validators;
 using Andersoft.Guard.Validators.Strings;
 using FluentAssertions;
-using LanguageExt;
 
 namespace Andersoft.Guard.UnitTests.Validators.Strings
 {

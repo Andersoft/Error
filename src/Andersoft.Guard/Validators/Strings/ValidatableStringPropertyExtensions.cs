@@ -1,6 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
-using LanguageExt;
 using LanguageExt.Common;
 
 namespace Andersoft.Guard.Validators.Strings;
