@@ -1,7 +1,7 @@
 ﻿<div align="center">
 
 ---
-[![Nuget](https://img.shields.io/nuget/v/Error)](https://www.nuget.org/packages/Error)
+[![Nuget](https://img.shields.io/nuget/v/Andersoft.Error)](https://www.nuget.org/packages/Andersoft.Error)
 
 [![Build Status](https://dev.azure.com/magnoxium/Andersoft/_apis/build/status/Andersoft.Error?branchName=main)](https://dev.azure.com/magnoxium/Andersoft/_build/latest?definitionId=55&branchName=main)
 ### A simple, fluent, extensible, and fully customizable library for returning exceptions using .NET 6+
