@@ -6,7 +6,7 @@ pool:
 variables:
 - group: NuGet
 - name: version
-  value: 0.0.1
+  value: 0.1.1
 - name: assemblyVersion
   value: 0.0.0.$(Build.BuildId)
 
