@@ -9,6 +9,7 @@
   <PropertyGroup>
     <PackageId>Error</PackageId>
     <Version>$(Version)</Version>
+    <AssemblyVersion>$(AssemblyVersion)</AssemblyVersion>
     <Authors>Jordan Anderson</Authors>
     <PackageTags>argument,guard,clause,exception,contract,assert,assertions,validation</PackageTags>
     <Description>A simple, fluent, extensible, and fully customizable library for returning or throwinfg exceptions using .NET 6+</Description>
@@ -16,7 +17,6 @@
     <RepositoryType>git</RepositoryType>
     <licenses>https://opensource.org/licenses/MIT</licenses>
     <RepositoryUrl>https://github.com/Andersoft/Error</RepositoryUrl>
-    <PackageOutputPath>../artifacts/</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
