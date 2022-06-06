@@ -1,7 +1,9 @@
 ﻿<div align="center">
 
 ---
+[![Nuget](https://img.shields.io/nuget/v/Error)](https://www.nuget.org/packages/Error)
 
+[![Build Status](https://dev.azure.com/magnoxium/Andersoft/_apis/build/status/Andersoft.Error?branchName=main)](https://dev.azure.com/magnoxium/Andersoft/_build/latest?definitionId=55&branchName=main)
 ### A simple, fluent, extensible, and fully customizable library for returning exceptions using .NET 6+
 
 `dotnet add package Andersoft.Error`
@@ -10,7 +12,7 @@
 
 
 # Credits
-This project is based on the awesome project called [Throw](https://github.com/safakgur/guard). Instead of throwing exceptions i wanted to return either an error or the successful result of an operation. If you like this project Give them both a ⭐.
+This project is based on the awesome project called [Throw](https://github.com/amantinband/throw). Instead of throwing exceptions i wanted to return either an error or the successful result of an operation. If you like this project Give them both a ⭐.
 
 # Common Scenarios
 Inspect input parameters using fluent syntax to either throw or return any validation errors. The static `Guard` class provides additional readability when checking parameters but is not needed as you can also chain directly off a previous validation check using `.And`.
@@ -401,4 +403,4 @@ person.Error().IfOutOfRange(p => p.Age, 0, 5); // System.ArgumentOutOfRangeExcep
 
 # License
 
-This project is licensed under the terms of the [MIT](https://github.com/mantinband/github-contribution-art/blob/main/LICENSE) license.
+This project is licensed under the terms of the [MIT](https://github.com/Andersoft/Error/blob/main/LICENSE) license.
