@@ -31,3 +31,7 @@ jobs:
     displayName: 'Publish Artifact'
     inputs:
       PathtoPublish: './artifacts/packages'
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'NUnit'
+      testResultsFiles: './artifacts/test-results/*.trx'
