@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Error</PackageId>
+    <PackageId>Andersoft.Error</PackageId>
     <Authors>Jordan Anderson</Authors>
     <PackageTags>argument,guard,clause,exception,contract,assert,assertions,validation</PackageTags>
     <Description>A simple, fluent, extensible, and fully customizable library for returning or throwinfg exceptions using .NET 6+</Description>
