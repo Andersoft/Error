@@ -1,15 +1,12 @@
-using System.Threading.Tasks;
+using System.IO;
 using Cake.Common.Tools.DotNet;
 using Cake.Common.Tools.DotNet.Build;
 using Cake.Common.Tools.DotNet.NuGet.Push;
-using Cake.Common.Tools.DotNet.Restore;
 using Cake.Common.Tools.DotNet.Test;
 using Cake.Common.Tools.DotNetCore.Pack;
 using Cake.Core;
 using Cake.Core.Diagnostics;
-using Cake.Core.IO;
 using Cake.Frosting;
-using Cake.Git;
 
 public static class Program
 {
@@ -31,7 +28,7 @@ public class BuildContext : FrostingContext
     public BuildContext(ICakeContext context)
         : base(context)
     {
-        SolutionPath = context.Arguments.GetArgument("SolutionPath");
+        SolutionPath = System.IO.Path.GetFullPath(context.Arguments.GetArgument("SolutionPath"));
         NugetApiKey = context.Arguments.GetArgument("NugetApiKey");
         Version = context.Arguments.GetArgument("BuildVersion");
         AssemblyVersion = context.Arguments.GetArgument("AssemblyVersion");
@@ -43,7 +40,11 @@ public sealed class CleanTask : FrostingTask<BuildContext>
 {
   public override void Run(BuildContext context)
   {
-    context.GitClean(context.SolutionPath);
+    var artifacts = System.IO.Path.Combine(context.SolutionPath, "artifacts/test-results");
+    if (Directory.Exists(artifacts))
+    {
+      Directory.Delete(artifacts);
+    }
   }
 }
 
@@ -53,7 +54,8 @@ public sealed class RestoreTask : FrostingTask<BuildContext>
 {
   public override void Run(BuildContext context)
   {
-    context.DotNetRestore();
+    context.Log.Information($"Restoring solution: {context.SolutionPath}");
+    context.DotNetRestore(context.SolutionPath);
   }
 }
 
@@ -111,17 +113,16 @@ public sealed class PackTask : FrostingTask<BuildContext>
 
 [TaskName("Publish")]
 [IsDependentOn(typeof(PackTask))]
-public sealed class PublishTask : AsyncFrostingTask<BuildContext>
+public sealed class PublishTask : FrostingTask<BuildContext>
 {
     // Tasks can be asynchronous
-    public override async Task RunAsync(BuildContext context)
+    public void RunAsync(BuildContext context)
     {
         context.DotNetNuGetPush(
             System.IO.Path.Combine(context.SolutionPath, "artifacts/packages"), 
             new DotNetNuGetPushSettings
             {
               ApiKey = context.NugetApiKey,
-              
             });
     }
 }
