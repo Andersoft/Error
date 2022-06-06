@@ -1,0 +1,33 @@
+name: $(version)-$(Build.SourceBranchName).$(Build.BuildId)
+
+variables:
+- group: NuGet
+- name: version
+  value: 0.0.1
+- name: assemblyVersion
+  value: 0.0.0.$(Build.BuildId)
+
+jobs:
+- job: Version
+  steps:
+  - powershell: |
+      if("$(Build.SourceBranchName)" -ne "main" ) { 
+          Write-Host "##vso[task.setvariable variable=version]$(version)-$(Build.SourceBranchName).$(Build.BuildId)" 
+      } else {
+          Write-Host "##vso[build.updatebuildnumber]$(version)"
+      }             
+    displayName: 'Configure Version'
+- job: Build
+  dependsOn: Version
+  steps:
+  - powershell: |
+      .\build.ps1 `
+      --SolutionPath=../ `
+      --NugetApiKey=key `
+      --BuildVersion=$(version) `
+      --AssemblyVersion=$(assemblyVersion)
+      displayName: 'Run Cake Script'
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact'
+    inputs:
+      PathtoPublish: './artifacts/packages'

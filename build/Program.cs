@@ -23,7 +23,6 @@ public static class Program
 
 public class BuildContext : FrostingContext
 {
-    public bool Delay { get; set; }
     public string SolutionPath { get; }
     public string NugetApiKey { get; }
     public string Version { get; }
@@ -32,7 +31,10 @@ public class BuildContext : FrostingContext
     public BuildContext(ICakeContext context)
         : base(context)
     {
-        Delay = context.Arguments.HasArgument("delay");
+        SolutionPath = context.Arguments.GetArgument("SolutionPath");
+        NugetApiKey = context.Arguments.GetArgument("NugetApiKey");
+        Version = context.Arguments.GetArgument("BuildVersion");
+        AssemblyVersion = context.Arguments.GetArgument("AssemblyVersion");
     }
 }
 
@@ -72,7 +74,8 @@ public sealed class BuildTask : FrostingTask<BuildContext>
   }
 }
 
-[TaskName("Hello")]
+[TaskName("Test")]
+[IsDependentOn(typeof(BuildTask))]
 public sealed class TestTask : FrostingTask<BuildContext>
 {
   public override void Run(BuildContext context)
@@ -82,13 +85,14 @@ public sealed class TestTask : FrostingTask<BuildContext>
       Configuration = "Release",
       NoRestore = true,
       NoBuild = true,
-      OutputDirectory = "/artifacts/test-results",
+      ResultsDirectory = System.IO.Path.Combine(context.SolutionPath, "artifacts/test-results"),
       Loggers = {"trx"}
     });
   }
 }
 
-[TaskName("Hello")]
+[TaskName("Pack")]
+[IsDependentOn(typeof(TestTask))]
 public sealed class PackTask : FrostingTask<BuildContext>
 {
     public override void Run(BuildContext context)
@@ -98,7 +102,9 @@ public sealed class PackTask : FrostingTask<BuildContext>
           Configuration = "Release",
           NoRestore = true, 
           NoBuild = true,
-          OutputDirectory = "/artifacts/packages",
+          OutputDirectory = System.IO.Path.Combine(context.SolutionPath, "artifacts/packages"),
+          ArgumentCustomization = args => args
+            .Append($"/p:Version={context.Version}")
         });
     }
 }
@@ -110,10 +116,13 @@ public sealed class PublishTask : AsyncFrostingTask<BuildContext>
     // Tasks can be asynchronous
     public override async Task RunAsync(BuildContext context)
     {
-        context.DotNetNuGetPush("/artifacts/packages/", new DotNetNuGetPushSettings
-        {
-          ApiKey = context.NugetApiKey
-        });
+        context.DotNetNuGetPush(
+            System.IO.Path.Combine(context.SolutionPath, "artifacts/packages"), 
+            new DotNetNuGetPushSettings
+            {
+              ApiKey = context.NugetApiKey,
+              
+            });
     }
 }
 
