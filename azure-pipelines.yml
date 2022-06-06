@@ -1,5 +1,8 @@
 name: $(version)-$(Build.SourceBranchName).$(Build.BuildId)
 
+pool:
+  vmImage: windows-latest
+
 variables:
 - group: NuGet
 - name: version
