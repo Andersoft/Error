@@ -11,9 +11,6 @@ variables:
   value: 0.0.0.$(Build.BuildId)
 
 jobs:
-- job: Version
-  steps:
-
 - job: Build
   steps:
   - powershell: |
