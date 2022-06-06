@@ -33,6 +33,6 @@ jobs:
       PathtoPublish: './artifacts/packages'
   - task: PublishTestResults@2
     inputs:
-      testResultsFormat: 'NUnit'
+      testResultsFormat: 'VSTest'
       searchFolder: './artifacts/test-results/'
       testResultsFiles: '*.trx'
