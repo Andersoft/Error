@@ -13,6 +13,9 @@ variables:
 jobs:
 - job: Version
   steps:
+
+- job: Build
+  steps:
   - powershell: |
       if("$(Build.SourceBranchName)" -ne "main" ) { 
           Write-Host "##vso[task.setvariable variable=version]$(version)-$(Build.SourceBranchName).$(Build.BuildId)" 
@@ -20,16 +23,13 @@ jobs:
           Write-Host "##vso[build.updatebuildnumber]$(version)"
       }             
     displayName: 'Configure Version'
-- job: Build
-  dependsOn: Version
-  steps:
   - powershell: |
       .\build.ps1 `
       --SolutionPath=../ `
       --NugetApiKey=$(nuget-key) `
       --BuildVersion=$(version) `
       --AssemblyVersion=$(assemblyVersion)
-      displayName: 'Run Cake Script'
+    displayName: 'Run Cake Script'
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact'
     inputs:
